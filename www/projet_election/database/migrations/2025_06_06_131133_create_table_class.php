@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id('id')->autoIncrement();
             $table->string('name');
             $table->string('place');
+            $table->timestamps();
         });
     }
 

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('vote', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('representative_id')->nullable()->references('id')->on('representative');
             $table->timestamps();
-            $table->foreignId('representative_id')->references('id')->on('representative');
         });
     }
 

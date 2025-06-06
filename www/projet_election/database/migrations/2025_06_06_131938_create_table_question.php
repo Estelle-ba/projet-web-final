@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('id')->autoIncrement();
             $table->string('question');
             $table->string('answers');
-            $table->foreignId('class_id')->references('id')->on('class');
+            $table->foreignId('class_id')->nullable()->references('id')->on('class');
             $table->timestamps();
         });
     }

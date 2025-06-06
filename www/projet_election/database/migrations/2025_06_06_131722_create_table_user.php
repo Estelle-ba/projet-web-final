@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id('id')->autoIncrement();
             $table->string('name');
-            $table->string('firstname');
-            $table->string('mail');
+            $table->string('lastname');
+            $table->string('email');
             $table->string('password');
             $table->string('phone_number');
-            $table->foreignId('class_id')->references('id')->on('class');
+            $table->string('role');
+            $table->foreignId('class_id')->nullable()->references('id')->on('class');
+            $table->timestamps();
         });
     }
 
