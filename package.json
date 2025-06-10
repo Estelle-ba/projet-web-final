@@ -1,0 +1,11 @@
+{
+  "name": "projet-web-final",
+  "lockfileVersion": 3,
+  "requires": true,
+  "packages": {},
+  "scripts": {
+  "dev": "npm run development",
+  "development": "mix"
+  }
+
+}
