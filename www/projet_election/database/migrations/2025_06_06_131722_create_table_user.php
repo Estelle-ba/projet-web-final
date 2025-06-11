@@ -22,6 +22,14 @@ return new class extends Migration
             $table->foreignId('class_id')->nullable()->references('id')->on('class');
             $table->timestamps();
         });
+        Schema::create('sessions', function (Blueprint $table) {
+            $table->string('id')->primary();
+            $table->foreignId('user_id')->nullable()->index();
+            $table->string('ip_address', 45)->nullable();
+            $table->text('user_agent')->nullable();
+            $table->longText('payload');
+            $table->integer('last_activity')->index();
+        });
     }
 
     /**
@@ -30,5 +38,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('table_user');
+        Schema::dropIfExists('sessions');
     }
 };
