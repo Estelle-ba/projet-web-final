@@ -6,7 +6,7 @@
 
     <body style="margin: 0; padding: 0;">
     @include('layouts.header')
-
+    <div style="background-color: white; height:100px"></div>
     <!-- Contenu principal -->
     <main>
         @yield('content')

@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-<div style="background-color: white; height:100px"></div>
 <div style="background-image: linear-gradient(to bottom, #8f0868 , #650da3); padding:5%">
     <h1 style="color:white; font-size: 40px">L'école qui bouscule le &lt;/code&gt;
     <br>Coding Factory by ESIEE-IT.</h1>
@@ -34,23 +33,24 @@
             </a>
         </div>
     </div>
-					</div>
+</div>
 
-				<div class="elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-89f2ec8" data-id="89f2ec8" data-element_type="column">
-			<div class="elementor-widget-wrap elementor-element-populated">
-						<div class="elementor-element elementor-element-7e967ef elementor-widget elementor-widget-video" data-id="7e967ef" data-element_type="widget" data-settings="{&quot;youtube_url&quot;:&quot;https:\/\/www.youtube.com\/watch?v=6at5tbZh8EE&quot;,&quot;video_type&quot;:&quot;youtube&quot;,&quot;controls&quot;:&quot;yes&quot;}" data-widget_type="video.default">
-							<div class="elementor-wrapper elementor-open-inline">
-			<div class="elementor-video"></div>		</div>
-						</div>
-					</div>
-		</div>
+<div class="elementor-column elementor-col-66 elementor-top-column elementor-element elementor-element-89f2ec8" data-id="89f2ec8" data-element_type="column">
+    <div class="elementor-widget-wrap elementor-element-populated">
+        <div class="elementor-element elementor-element-7e967ef elementor-widget elementor-widget-video" data-id="7e967ef" data-element_type="widget" data-settings="{https://www.youtube.com/watch?v=6at5tbZh8EE&t=2s&ab_channel=CCIParisIdF}" data-widget_type="video.default">
+            <div class="elementor-wrapper elementor-open-inline">
+			    <div class="elementor-video"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
-				<section class="elementor-section elementor-top-section elementor-element elementor-element-b370032 elementor-section-full_width elementor-section-content-middle elementor-reverse-tablet elementor-reverse-mobile elementor-section-height-default elementor-section-height-default" data-id="b370032" data-element_type="section">
-						<div class="elementor-container elementor-column-gap-no">
-					<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-0beb8d5" data-id="0beb8d5" data-element_type="column">
+<section class="elementor-section elementor-top-section elementor-element elementor-element-b370032 elementor-section-full_width elementor-section-content-middle elementor-reverse-tablet elementor-reverse-mobile elementor-section-height-default elementor-section-height-default" data-id="b370032" data-element_type="section">
+    <div class="elementor-container elementor-column-gap-no">
+        <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-0beb8d5" data-id="0beb8d5" data-element_type="column">
 			<div class="elementor-widget-wrap elementor-element-populated">
-						<div class="elementor-element elementor-element-081647a elementor-widget elementor-widget-video" data-id="081647a" data-element_type="widget" data-settings="{&quot;youtube_url&quot;:&quot;https:\/\/youtu.be\/T8JvYuoerG8?list=PLJkWjbTFhbiPc_k7mKrTXEgLi93sajhPa&quot;,&quot;video_type&quot;:&quot;youtube&quot;,&quot;controls&quot;:&quot;yes&quot;}" data-widget_type="video.default">
-							<div class="elementor-wrapper elementor-open-inline">
+                <div class="elementor-element elementor-element-081647a elementor-widget elementor-widget-video" data-id="081647a" data-element_type="widget" data-settings="{&quot;youtube_url&quot;:&quot;https:\/\/youtu.be\/T8JvYuoerG8?list=PLJkWjbTFhbiPc_k7mKrTXEgLi93sajhPa&quot;,&quot;video_type&quot;:&quot;youtube&quot;,&quot;controls&quot;:&quot;yes&quot;}" data-widget_type="video.default">
+                    <div class="elementor-wrapper elementor-open-inline">
 			<div class="elementor-video"></div>		</div>
 						</div>
 					</div>
