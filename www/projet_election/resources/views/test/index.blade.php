@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="container mx-auto p-4">
         @if(session('success'))
@@ -10,107 +9,7 @@
 
 
 
-
-
-
-
-<?php
-use Carbon\Carbon;
-
-// Date actuelle
-$now = Carbon::now('Europe/Paris');
-echo 'date est heur ',$now . "<br>";
-// Date de fin
-$finish = Carbon::parse('2025-06-13 16:30:00', 'Europe/Paris');
-echo 'date est heur de fin ',$finish . "<br>";
-
-// Différence entre maintenant et la date de fin
-$diff = $now->diff($finish);
-
-// Affichage formaté
-if ($finish->isPast()) {
-    echo "Événement terminé.";
-} else {
-    echo sprintf(
-    "%02d jours, %02d heures, %02d minutes, %02d secondes",
-    $diff->d,
-    $diff->h,
-    $diff->i,
-    $diff->s
-    );
-}
-
-
-?>
-
-
-
-<div id="date">Chargement...</div>
-<div id="countdown">Chargement...</div>
-
-    <script>
-        //afichage date
-        function formatDate(date) {
-        const mois = [
-            "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
-            "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
-        ];
-
-        const jour = date.getDate();
-        const moisNom = mois[date.getMonth()];
-        const annee = date.getFullYear();
-
-        const heures = String(date.getHours()).padStart(2, '0');
-        const minutes = String(date.getMinutes()).padStart(2, '0');
-        const secondes = String(date.getSeconds()).padStart(2, '0');
-
-        return `${jour} ${moisNom} ${annee} ${heures}:${minutes}:${secondes}`;
-    }
-
-
-
-
-        // Date de fin JavaScript
-        const finishTime = new Date("{{ $finish->toIso8601String() }}");
-
-        function updateCountdown() {
-            const now = new Date();
-            document.getElementById('date').innerText = formatDate(now);
-            const diffMs = finishTime - now;
-
-            if (diffMs <= 0) {
-                document.getElementById('countdown').innerText = "Événement terminé.";
-                clearInterval(interval);
-                window.location.href = '/test'; // Redirection JS
-                return;
-            }
-
-            const seconds = Math.floor(diffMs / 1000);
-            const days = Math.floor(seconds / (3600 * 24));
-            const hours = Math.floor((seconds % (3600 * 24)) / 3600);
-            const minutes = Math.floor((seconds % 3600) / 60);
-            const secs = seconds % 60;
-
-            document.getElementById('countdown').innerText =
-                `${String(days).padStart(2, '0')} jours, ` +
-                `${String(hours).padStart(2, '0')} heures, ` +
-                `${String(minutes).padStart(2, '0')} minutes, ` +
-                `${String(secs).padStart(2, '0')} secondes`;
-        }
-
-        const interval = setInterval(updateCountdown, 1000);
-        updateCountdown(); // Lancer immédiatement
-    </script>
-
-
-
-
-
-
-
-
-
-
+        
         <h1 class="text-2xl font-bold mb-4">Élection des délégués</h1>
 
         {{-- Liste des candidats --}}
