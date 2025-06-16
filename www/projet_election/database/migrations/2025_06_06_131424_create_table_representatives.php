@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('lastname');
             $table->string('mail');
-            $table->foreignId('class_id')->nullable()->references('id')->on('class');
+            $table->foreignId('class_id')->nullable()->references('id')->on('class')->cascadeOnDelete();
             $table->timestamps();
         });
     }
