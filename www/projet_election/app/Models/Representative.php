@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Representative extends Model
 {
-    // si votre table s’appelle au pluriel 'representatives', décommentez :
-    // protected $table = 'representative';
+
     protected $table = 'representative';
     protected $fillable = [
         'name',
@@ -15,6 +14,7 @@ class Representative extends Model
         'mail',
         'suppleant',
         'video_link',
+        'description',
         'class_id',
     ];
 }

@@ -20,6 +20,7 @@
                         class="text-blue-600 hover:underline open-video"
                         data-video-url="{{ $candidat->video_link }}"
                         data-name="{{ $candidat->name }} {{ $candidat->lastname }}"
+                        title="{{ $candidat->description }}"
                     >
                         {{ $candidat->name }} {{ $candidat->lastname }}
                     </button>
@@ -63,6 +64,10 @@
                     <div class="mb-3">
                         <label class="block mb-1">Vidéo de propagande (YouTube URL)</label>
                         <input type="url" name="video_link" class="w-full border px-3 py-2">
+                    </div>
+                    <div class="mb-3">
+                        <label class="block mb-1">Description</label>
+                        <textarea name="description" class="w-full border px-3 py-2" rows="3" placeholder="Présentez-vous en quelques mots..."></textarea>
                     </div>
                     <div class="flex justify-end">
                         <button type="button" id="closeModal" class="mr-2 px-4 py-2">Annuler</button>
