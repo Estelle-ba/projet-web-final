@@ -24,7 +24,7 @@ class PDFController extends Controller
             'class' =>$class
         ];
 
-        $pdf = PDF::loadView('testPDF', $data);
+        $pdf = PDF::loadView('pdf.Representatives', $data);
 
         return $pdf->download('Les délégués et suppléants de l\'année '. date('Y'). '.pdf');
     }
