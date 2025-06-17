@@ -17,8 +17,8 @@ class PDFController extends Controller
         $class = ClassModel::all();
 
         $data = [
-            'title' => 'Le PDF test',
-            'date' => date('m/d/Y'),
+            'title' => 'Les délégués et suppléants',
+            'date' => date('Y'),
             'users' => $users,
             'representative' => $representative,
             'class' =>$class
@@ -26,6 +26,6 @@ class PDFController extends Controller
 
         $pdf = PDF::loadView('testPDF', $data);
 
-        return $pdf->download('test.pdf');
+        return $pdf->download('Les délégués et suppléants de l\'année '. date('Y'). '.pdf');
     }
 }
