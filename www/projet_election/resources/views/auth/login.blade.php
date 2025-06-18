@@ -12,18 +12,26 @@
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                            <label for="email_prefix" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <div class="input-group">
+                                    <input id="email_prefix" type="text"
+                                        class="form-control @error('email') is-invalid @enderror"
+                                        name="email_prefix" value="{{ old('email_prefix') }}"
+                                        required placeholder="name.lastname or pseudo" autocomplete="off">
+
+                                    <span class="input-group-text">@edu.esiee-it.fr</span>
+                                </div>
 
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="invalid-feedback d-block" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                         </div>
+
 
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
