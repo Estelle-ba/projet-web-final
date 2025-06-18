@@ -2,17 +2,19 @@
 <html>
     <head>
         <title>Coding Factory</title>
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
     </head>
 
-    <body style="margin: 0; padding: 0;">
+    <body>
     @include('layouts.header')
-    <div style="background-color: white; height:100px"></div>
+
     <!-- Contenu principal -->
     <main>
         @yield('content')
     </main>
 
-    @include('layouts.footer')
+
 
     <!-- Scripts communs -->
     @stack('scripts')
