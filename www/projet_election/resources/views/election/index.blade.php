@@ -154,3 +154,5 @@
         });
     </script>
 @endpush
+@section('content')
+@endsection

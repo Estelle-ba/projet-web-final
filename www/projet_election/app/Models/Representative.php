@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Representative extends Model
 {
-
     protected $table = 'representative';
     protected $fillable = [
         'name',
@@ -16,6 +15,8 @@ class Representative extends Model
         'video_link',
         'description',
         'class_id',
+        'id_suppleant',
+        'id_representative'
     ];
 }
 

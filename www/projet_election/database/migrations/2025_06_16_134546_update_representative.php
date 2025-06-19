@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vote', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('representative_id')->nullable()->references('id')->on('representative')->cascadeOnDelete();
-            $table->timestamps();
+
+        Schema::table('representative', function (Blueprint $table) {
+            $table->foreignId('id_representative')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreignId('id_suppleant')->references('id')->on('users')->cascadeOnDelete();
+            $table->string('video_link');
         });
     }
 
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('table_vote');
+        //
     }
 };

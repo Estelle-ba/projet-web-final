@@ -1,0 +1,239 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+
+.header_welcome{
+    padding:1%;
+    position: fixed;
+    background-color: white;
+    width:100%;
+    height:8%;
+}
+.space_welcome{
+    background-color: white;
+    height:100px;
+}
+@media screen and (min-width: 950px) {
+
+}
+
+.header_home{
+    left: 0;
+    bottom: 0;
+    padding:2%;
+    position: fixed;
+    width:100%;
+    height:5%;
+    border-top: solid;
+    .img_computer{
+        display:none;
+    }
+    .img_phone{
+        display:block;
+        height:30px;
+    }
+    .icons{
+        display:flex;
+        flex-direction: row;
+        width:100%;
+        justify-content: space-between;
+        .menu{
+            padding-right: 2.5%;
+            float:none;
+            justify-content: space-evenly;
+            display:flex;
+            width:100%;
+            flex-direction: row;
+        }
+    }
+}
+.space_home{
+    display:none;
+}
+
+@media (min-width: 950px) {
+    .header_home{
+        border-bottom: solid;
+        padding:1%;
+        bottom:auto;
+        background-color:white;
+        height:75px;
+        .img_computer{
+            display:flex;
+            height:70px;
+            width:auto;
+            flex-direction: column;
+            img{
+                object-fit: contain;
+                height:45px;
+                width:auto;
+            }
+            p{
+                font-size:16px;
+            }
+
+        }
+        .img_phone{
+            display:none;
+
+        }
+        .icons{
+            display:flex;
+            flex-direction: row;
+            width:100%;
+            .menu{
+                display:flex;
+                justify-content: space-between;
+                width:45%;
+                float:right;
+            }
+        }
+    }
+    .space_home{
+        display:block;
+        background-color: white;
+        height:100px;
+    }
+}
+
+.presentation_welcome{
+
+}
+
+@media screen and (min-width: 950px) {
+
+}
+
+
+.presentation_home{
+    background-image: linear-gradient(to bottom, #8f0868 , #650da3);
+    padding:5%;
+    justify-content: center;
+    .right{
+        padding:5%;
+        display: flex;
+        float:none;
+        width:80%;
+    }
+    .left{
+        display: flex;
+        float:none;
+        width:80%;
+        h1{
+            text-align:center;
+            font-size: 2rem;
+            color:white;
+        }
+        p{
+            font-size: 1rem;
+            color:white;
+        }
+    }
+}
+
+@media screen and (min-width: 950px) {
+
+    .presentation_home{
+        justify-content: normal;
+        height:30rem;
+        .right{
+            display: flex;
+            float:right;
+            width:40%;
+        }
+        .left{
+            display: flex;
+            float:left;
+            width:40%;
+            h1{
+                font-size: 3rem;
+                color:white;
+            }
+            p{
+                font-size: 2rem;
+                color:white;
+            }
+        }
+    }
+}
+.account{
+    background-image: linear-gradient(to bottom, #8f0868 , #650da3);
+    height:calc(100vw - 200px);
+    flex-direction: column;
+    .account_right{
+        background-color: rgb(0, 0, 0, 0);
+        display: flex;
+        float:none;
+        width:100%;
+        flex-direction: column;
+    }
+    .account_left{
+        display: flex;
+        float:none;
+        width:80%;
+        flex-direction: column;
+        .photo{
+            justify-content: center;
+            display:block;
+            width:10rem;
+            height:10rem;
+            border-radius: 100%;
+        }
+        h1{
+            text-align:center;
+            font-size: 1.5rem;
+            color:black;
+        }
+        p{
+            font-size: 1rem;
+            color:black;
+        }
+    }
+}
+
+@media screen and (min-width: 950px) {
+    .account{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        .account_right{
+            background-color: white;
+            height:100%;
+            display: flex;
+            float:right;
+            width:60%;
+            h1.account_right{
+                text-align:center;
+                font-size: 2rem;
+                color:white;
+            }
+            p.account_right{
+                text-align:center;
+                font-size: 1.5rem;
+                color:white;
+            }
+        }
+        .account_left{
+            display: flex;
+            float:none;
+            width:40%;
+            .photo{
+                width:20rem;
+                height:20rem;
+                border-radius: 100%;
+            }
+            h1.account_left{
+                text-align:center;
+                font-size: 3rem;
+                color:white;
+            }
+            p.account_left{
+                text-align:center;
+                font-size: 2rem;
+                color:white;
+            }
+        }
+    }
+}
