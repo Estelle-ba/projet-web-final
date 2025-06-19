@@ -16,4 +16,6 @@ Route::Post('/accountlogout', [App\Http\Controllers\Auth\LoginController::class,
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/account', [App\Http\Controllers\HomeController::class, 'account'])->name('account');
+Route::get('/common-life', [App\Http\Controllers\HomeController::class, 'common_life'])->name('common-life');
 

@@ -26,4 +26,16 @@ class HomeController extends Controller
         $user = auth()->user();
         return view('home', compact('user'));
     }
+
+    public function account()
+    {
+        $user = auth()->user();
+        return view('account', compact('user'));
+    }
+
+    public function common_life()
+    {
+        $user = auth()->user();
+        return view('election.index', compact('user'));
+    }
 }

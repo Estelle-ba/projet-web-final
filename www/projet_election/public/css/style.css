@@ -9,13 +9,13 @@ body{
     position: fixed;
     background-color: white;
     width:100%;
-    height:50px;
+    height:8%;
 }
 .space_welcome{
     background-color: white;
-    height:5%;
+    height:100px;
 }
-@media screen and (min-width: 80rem) {
+@media screen and (min-width: 950px) {
 
 }
 
@@ -39,7 +39,7 @@ body{
         flex-direction: row;
         width:100%;
         justify-content: space-between;
-        .account{
+        .menu{
             padding-right: 2.5%;
             float:none;
             justify-content: space-evenly;
@@ -58,13 +58,17 @@ body{
         border-bottom: solid;
         padding:1%;
         bottom:auto;
-        height:8%;
+        background-color:white;
+        height:75px;
         .img_computer{
-            display:block;
+            display:flex;
             height:70px;
+            width:auto;
+            flex-direction: column;
             img{
+                object-fit: contain;
                 height:45px;
-                margin-left: 15px;
+                width:auto;
             }
             p{
                 font-size:16px;
@@ -79,11 +83,10 @@ body{
             display:flex;
             flex-direction: row;
             width:100%;
-            .account{
-
+            .menu{
                 display:flex;
                 justify-content: space-between;
-                width:35%;
+                width:45%;
                 float:right;
             }
         }
@@ -95,3 +98,142 @@ body{
     }
 }
 
+.presentation_welcome{
+
+}
+
+@media screen and (min-width: 950px) {
+
+}
+
+
+.presentation_home{
+    background-image: linear-gradient(to bottom, #8f0868 , #650da3);
+    padding:5%;
+    justify-content: center;
+    .right{
+        padding:5%;
+        display: flex;
+        float:none;
+        width:80%;
+    }
+    .left{
+        display: flex;
+        float:none;
+        width:80%;
+        h1{
+            text-align:center;
+            font-size: 2rem;
+            color:white;
+        }
+        p{
+            font-size: 1rem;
+            color:white;
+        }
+    }
+}
+
+@media screen and (min-width: 950px) {
+
+    .presentation_home{
+        justify-content: normal;
+        height:30rem;
+        .right{
+            display: flex;
+            float:right;
+            width:40%;
+        }
+        .left{
+            display: flex;
+            float:left;
+            width:40%;
+            h1{
+                font-size: 3rem;
+                color:white;
+            }
+            p{
+                font-size: 2rem;
+                color:white;
+            }
+        }
+    }
+}
+.account{
+    background-image: linear-gradient(to bottom, #8f0868 , #650da3);
+    height:calc(100vw - 200px);
+    flex-direction: column;
+    .account_right{
+        background-color: rgb(0, 0, 0, 0);
+        display: flex;
+        float:none;
+        width:100%;
+        flex-direction: column;
+    }
+    .account_left{
+        display: flex;
+        float:none;
+        width:80%;
+        flex-direction: column;
+        .photo{
+            justify-content: center;
+            display:block;
+            width:10rem;
+            height:10rem;
+            border-radius: 100%;
+        }
+        h1{
+            text-align:center;
+            font-size: 1.5rem;
+            color:black;
+        }
+        p{
+            font-size: 1rem;
+            color:black;
+        }
+    }
+}
+
+@media screen and (min-width: 950px) {
+    .account{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        .account_right{
+            background-color: white;
+            height:100%;
+            display: flex;
+            float:right;
+            width:60%;
+            h1.account_right{
+                text-align:center;
+                font-size: 2rem;
+                color:white;
+            }
+            p.account_right{
+                text-align:center;
+                font-size: 1.5rem;
+                color:white;
+            }
+        }
+        .account_left{
+            display: flex;
+            float:none;
+            width:40%;
+            .photo{
+                width:20rem;
+                height:20rem;
+                border-radius: 100%;
+            }
+            h1.account_left{
+                text-align:center;
+                font-size: 3rem;
+                color:white;
+            }
+            p.account_left{
+                text-align:center;
+                font-size: 2rem;
+                color:white;
+            }
+        }
+    }
+}

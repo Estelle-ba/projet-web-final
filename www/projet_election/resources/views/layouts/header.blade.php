@@ -11,7 +11,7 @@
                      src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogodix.com%2Flogo%2F1633508.png&f=1&nofb=1&ipt=9864e6db1aa17e99b43f2306c116c08915c2e4d673f478598ad677b2d3fcf7c8"
                      alt="Logo Home"/>
             </a>
-            <div class="account">
+            <div class="menu">
 
                 <!--  timetable logo -->
                 <a href="{{route('login')}}" >
@@ -53,7 +53,7 @@
                 </a>
 
                 <!-- Common Life logo -->
-                <a href="{{route('login')}}" >
+                <a href="{{route('common-life')}}" >
                     <div class="img_computer">
                         <img decoding="async"
                              src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F010%2F159%2F990%2Fnon_2x%2Fpeople-icon-sign-symbol-design-free-png.png&f=1&nofb=1&ipt=0d8e52b7ccda88f0176d59c1783a55c9933ca93e7222cf3c694b9c8b0f620a85"
@@ -66,7 +66,7 @@
                 </a>
 
                 <!-- Account logo -->
-                <a href="{{route('login')}}" >
+                <a href="{{route('account')}}" >
                     <img class="img_computer" style="border-radius: 100%;" decoding="async"
                          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.mos.cms.futurecdn.net%2FTHCiUmVZcgxHodGCK3EyYo-1200-80.jpg&f=1&nofb=1&ipt=6f41f224083726534fccfe1f3bf33414391d642b0fb74999d9d3238d6895dc5d"
                          alt="Se connecter"/>
