@@ -53,7 +53,7 @@
                 </a>
 
                 <!-- Common Life logo -->
-                <a href="{{route('common-life')}}" >
+                <a href="{{route('election.index')}}" >
                     <div class="img_computer">
                         <img decoding="async"
                              src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F010%2F159%2F990%2Fnon_2x%2Fpeople-icon-sign-symbol-design-free-png.png&f=1&nofb=1&ipt=0d8e52b7ccda88f0176d59c1783a55c9933ca93e7222cf3c694b9c8b0f620a85"

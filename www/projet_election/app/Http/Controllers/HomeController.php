@@ -33,9 +33,4 @@ class HomeController extends Controller
         return view('account', compact('user'));
     }
 
-    public function common_life()
-    {
-        $user = auth()->user();
-        return view('election.index', compact('user'));
-    }
 }

@@ -13,9 +13,8 @@ return new class extends Migration
     {
 
         Schema::table('representative', function (Blueprint $table) {
-            $table->foreignId('id_representative')->references('id')->on('users')->cascadeOnDelete();
-            $table->foreignId('id_suppleant')->references('id')->on('users')->cascadeOnDelete();
-            $table->string('video_link');
+            $table->foreignId('id_representative')->nullable();
+            $table->foreignId('id_suppleant')->nullable();
         });
     }
 

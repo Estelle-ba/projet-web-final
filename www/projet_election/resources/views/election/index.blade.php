@@ -46,20 +46,31 @@
                 <form action="{{ route('election.store') }}" method="POST">
                     @csrf
                     <div class="mb-3">
+                        <input type="hidden" name="id_representative" value="{{$user->id}}">
                         <label class="block mb-1">Nom</label>
-                        <input type="text" name="name" class="w-full border px-3 py-2" required>
+                        <input  type="hidden" name="lastname" value="{{$user->lastname}}">
+                        <div class="w-full border px-3 py-2" >{{$user->lastname}}</div>
                     </div>
                     <div class="mb-3">
                         <label class="block mb-1">Prénom</label>
-                        <input type="text" name="lastname" class="w-full border px-3 py-2" required>
+                        <input type="hidden" name="name" value="{{$user->name}}">
+                        <div class="w-full border px-3 py-2" >{{$user->name}}</div>
                     </div>
                     <div class="mb-3">
                         <label class="block mb-1">Email</label>
-                        <input type="email" name="mail" class="w-full border px-3 py-2" required>
+                        <input type="hidden" name="mail" value="{{$user->email}}">
+                        <div class="w-full border px-3 py-2" >{{$user->email}}</div>
                     </div>
                     <div class="mb-3">
                         <label class="block mb-1">Suppléant</label>
-                        <input type="text" name="suppleant" class="w-full border px-3 py-2">
+                        <select name="id_suppleant">
+                            @foreach($alluser as $suppleant)
+                                @if($suppleant -> class_id == $user -> class_id && $suppleant -> id != $user -> id)
+                                    <option value="{{$suppleant->id}}">{{$suppleant->name}}</option>
+                                @endif
+                            @endforeach
+                        </select>
+
                     </div>
                     <div class="mb-3">
                         <label class="block mb-1">Vidéo de propagande (YouTube URL)</label>
