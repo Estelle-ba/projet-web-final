@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\ClassModel;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,14 +24,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = auth()->user();
+        $user = Auth::user();
         return view('home', compact('user'));
     }
 
     public function account()
     {
-        $user = auth()->user();
-        return view('account', compact('user'));
+        $user = Auth::user();
+        $class = ClassModel::where('id', $user->class_id)->first();
+        return view('account', compact('user', 'class'));
     }
 
 }

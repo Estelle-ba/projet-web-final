@@ -23,6 +23,7 @@ body{
     left: 0;
     bottom: 0;
     padding:2%;
+    background-color: white;
     position: fixed;
     width:100%;
     height:5%;
@@ -59,7 +60,7 @@ body{
         padding:1%;
         bottom:auto;
         background-color:white;
-        height:75px;
+        height:100px;
         .img_computer{
             display:flex;
             height:70px;
@@ -160,78 +161,138 @@ body{
 }
 .account{
     background-image: linear-gradient(to bottom, #8f0868 , #650da3);
-    height:calc(100vw - 200px);
+    height:100vh;
     flex-direction: column;
+    img{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        justify-content: center;
+        width:10rem;
+        height:10rem;
+        border-radius: 100%;
+    }
+    h1, p{
+        width:100%;
+        text-align:center;
+        color:white;
+    }
+    h1{
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+    p{
+        font-size: 1rem;
+    }
     .account_right{
         background-color: rgb(0, 0, 0, 0);
         display: flex;
         float:none;
         width:100%;
         flex-direction: column;
+        .change_color{
+            overflow-x: scroll;
+            overflow-y: hidden;
+            padding: 2%;
+            height: 4rem;
+            margin-bottom: 2%;
+            white-space: nowrap;
+            scroll-snap-type: x mandatory;
+            .color{
+                border-radius: 50%;
+                width: 2.5rem;
+                height: 2.5rem;
+                background-image: linear-gradient(to bottom, #1a202c , #718096);
+            }
+        }
+        .container_button{
+            width: 100%;
+            .button_1, .button_2{
+                display: block;
+                width:90%;
+                margin: 0 auto;
+                margin-top: 2%;
+                padding:10px;
+                border-radius: 20px;
+                text-decoration: none;
+                text-align: center;
+            }
+            .button_1{
+                border: 2px solid #d246a9;
+                background-color: white;
+                color:#d246a9;
+            }
+            .button_2{
+                background-color: #d246a9 ;
+                padding:10px;
+                border-radius: 20px;
+                color:white;
+            }
+        }
     }
     .account_left{
         display: flex;
         float:none;
-        width:80%;
+        width:100%;
         flex-direction: column;
-        .photo{
-            justify-content: center;
-            display:block;
-            width:10rem;
-            height:10rem;
-            border-radius: 100%;
-        }
-        h1{
-            text-align:center;
-            font-size: 1.5rem;
-            color:black;
-        }
-        p{
-            font-size: 1rem;
-            color:black;
-        }
+        padding-bottom: 5%;
+        margin-bottom:5%;
+        border-bottom: solid;
+        border-color: white;
     }
 }
 
 @media screen and (min-width: 500px) {
     .account{
+        height:calc(100vh - 40px);
         display: flex;
         flex-direction: row;
         justify-content: center;
+        img {
+            width: 12.5rem;
+            height: 12.5rem;
+            border-radius: 100%;
+        }
+        h1{
+            font-size: 2rem;
+        }
+        p{
+            font-size: 1.5rem;
+        }
         .account_right{
+            display : flex;
             background-color: white;
             height:100%;
-            display: flex;
             float:right;
             width:60%;
-            h1.account_right{
-                text-align:center;
-                font-size: 2rem;
-                color:white;
+            h1, p {
+                color:black;
             }
-            p.account_right{
-                text-align:center;
-                font-size: 1.5rem;
-                color:white;
+            .change_color {
+                padding: 2.5%;
+                height: 5.5rem;
+                margin-bottom: 2.5%;
+                .color {
+                    width: 3rem;
+                    height: 3rem;
+                }
+            }
+            .container_button {
+                display:flex ;
+                justify-content: space-evenly;
+                .button_1, .button_2 {
+                    width: 40%;
+                }
             }
         }
         .account_left{
+            margin-bottom:0;
+            border-bottom: none;
+            padding : 1%;
             display: flex;
             float:none;
             width:40%;
-            .photo{
-                width:20rem;
-                height:20rem;
-                border-radius: 100%;
-            }
-            h1.account_left{
-                text-align:center;
-                font-size: 3rem;
-                color:white;
-            }
-            p.account_left{
-                text-align:center;
-                font-size: 2rem;
+            h1, p {
                 color:white;
             }
         }
