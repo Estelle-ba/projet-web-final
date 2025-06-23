@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ClassModel;
+use App\Models\Image_Profile;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -25,6 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
+        $picture = Image_Profile::where('user_id', $user->id)->first();
         return view('home', compact('user'));
     }
 
@@ -32,7 +34,8 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         $class = ClassModel::where('id', $user->class_id)->first();
-        return view('account', compact('user', 'class'));
+        $picture = Image_Profile::where('user_id', $user->id)->first();
+        return view('account', compact('user', 'class', 'picture'));
     }
 
 }

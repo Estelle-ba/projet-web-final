@@ -3,9 +3,15 @@
 @section('content')
     <div class="account">
         <div class="account_left">
+            @if($picture == null)
             <img
-                 src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F46%2F46%2F3f%2F46463f00c0db960a677c04f072238b82.png&f=1&nofb=1&ipt=90013566884dc561ed9ad99c7aafd6c5f33b6ba8fa3a498cf9d36374b375bddf"
+                 src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.istockphoto.com%2Fvectors%2Fvector-illustration-male-silhouette-profile-picture-with-question-on-vector-id937695038%3Fk%3D20%26m%3D937695038%26s%3D170667a%26w%3D0%26h%3DVwqo48FSEf_hE_ZaESBiEGH6YCbq7n7y6opPpWr1lzg%3D&f=1&nofb=1&ipt=81847cb771d101797b29929664a5ed1b57ef0716efecff7475bb51e2f44d352e"
                  alt=""/>
+            @else()
+                <img
+                    src="{{asset('storage/' . $picture->image)}}"
+                    alt=""/>
+            @endif
             <h1>
                 {{$user->name}} {{$user->lastname}}
             </h1>
@@ -45,7 +51,7 @@
                 <button class="color"></button>
             </div>
             <div class="container_button">
-                <button type="submit"  class="button_1">
+                <button class="button_1" onclick="openModal('change_profile_picture')">
                     Changer de photo
                 </button>
                 <form  method="Post" action="{{route('accountlogout')}}" class="button_2">
@@ -56,6 +62,37 @@
                     </button>
                 </form>
             </div>
+
+            <div>
+
+            </div>
+        </div>
+    </div>
+    <div class="custom-modal" id="change_profile_picture" tabindex="-1" role="dialog" aria-labelledby="change_profile_picture">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content" >
+                <div class="modal-header">
+                    <h5 class="flex modal-title">Choisir une image</h5>
+                </div>
+                <form action="{{ route('upload_image') }}" method="POST" class="shadow p-12" enctype="multipart/form-data">
+                    @csrf
+                    <label class="block mb-4">
+                        <input type="hidden" name="user_id" value="{{$user->id}}">
+                        <input type="file" name="image"
+                               class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
+                        @error('image')
+                        <span class="text-red-600 text-sm">{{ $message }}</span>
+                        @enderror
+                    </label>
+                    <div class="container_button">
+                        <button type="submit" class="button_1">Changer de photo</button>
+                        <button class="button_2" onclick="closeModal('change_profile_picture')">Fermer</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script src="{{ asset('js/modal.js') }}"></script>
+@endpush

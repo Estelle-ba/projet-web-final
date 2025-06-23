@@ -13,7 +13,7 @@
             </a>
             <div class="menu">
 
-                <!--  timetable logo -->
+                <!--  Timetable logo -->
                 <a href="{{route('login')}}" >
                     <div class="img_computer">
                         <img decoding="async"
@@ -67,12 +67,21 @@
 
                 <!-- Account logo -->
                 <a href="{{route('account')}}" >
-                    <img class="img_computer" style="border-radius: 100%;" decoding="async"
-                         src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.mos.cms.futurecdn.net%2FTHCiUmVZcgxHodGCK3EyYo-1200-80.jpg&f=1&nofb=1&ipt=6f41f224083726534fccfe1f3bf33414391d642b0fb74999d9d3238d6895dc5d"
-                         alt="Se connecter"/>
-                    <img class="img_phone" style="border-radius: 100%;" decoding="async"
-                         src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F5f%2F10%2Fb4%2F5f10b459021c41153bca62ee8b9288b9.jpg&f=1&nofb=1&ipt=153b0c86f77135b2e8f5723640a785762b95f8d362acd93606820e6564a40a97"
-                         alt="Se connecter"/>
+                    @if($picture == null)
+                        <img class="img_computer" style="border-radius: 100%;" decoding="async"
+                            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.istockphoto.com%2Fvectors%2Fvector-illustration-male-silhouette-profile-picture-with-question-on-vector-id937695038%3Fk%3D20%26m%3D937695038%26s%3D170667a%26w%3D0%26h%3DVwqo48FSEf_hE_ZaESBiEGH6YCbq7n7y6opPpWr1lzg%3D&f=1&nofb=1&ipt=81847cb771d101797b29929664a5ed1b57ef0716efecff7475bb51e2f44d352e"
+                            alt=""/>
+                        <img class="img_phone" style="border-radius: 100%;" decoding="async"
+                             src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.istockphoto.com%2Fvectors%2Fvector-illustration-male-silhouette-profile-picture-with-question-on-vector-id937695038%3Fk%3D20%26m%3D937695038%26s%3D170667a%26w%3D0%26h%3DVwqo48FSEf_hE_ZaESBiEGH6YCbq7n7y6opPpWr1lzg%3D&f=1&nofb=1&ipt=81847cb771d101797b29929664a5ed1b57ef0716efecff7475bb51e2f44d352e"
+                             alt=""/>
+                    @else()
+                        <img class="img_computer" style="border-radius: 100%;" decoding="async"
+                            src="{{asset('storage/' . $picture->image)}}"
+                            alt=""/>
+                        <img class="img_phone" style="border-radius: 100%;" decoding="async"
+                             src="{{asset('storage/' . $picture->image)}}"
+                             alt=""/>
+                    @endif
                 </a>
 
             </div>
