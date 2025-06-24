@@ -402,5 +402,30 @@ class UserSeeder extends Seeder
             'role'=>'student',
             'class_id' => 10,
         ]);
+
+        $teacher_1 = User::create([
+            'name'=>'prof',
+            'lastname'=>'1',
+            'email'=>'prof@prof1.com',
+            'password'=> Hash::make('123456789'),
+            'phone_number'=>'0120305649',
+            'role'=>'teacher',
+        ]);
+        $teacher_2 = User::create([
+            'name'=>'prof',
+            'lastname'=>'2',
+            'email'=>'prof@prof2.com',
+            'password'=> Hash::make('123456789'),
+            'phone_number'=>'0120305649',
+            'role'=>'teacher',
+        ]);
+        $teache_3= User::create([
+            'name'=>'prof',
+            'lastname'=>'3',
+            'email'=>'prof@prof3.com',
+            'password'=> Hash::make('123456789'),
+            'phone_number'=>'0120305649',
+            'role'=>'teacher',
+        ]);
     }
 }

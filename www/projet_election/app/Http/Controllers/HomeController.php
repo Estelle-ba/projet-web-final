@@ -27,7 +27,7 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         $picture = Image_Profile::where('user_id', $user->id)->first();
-        return view('home', compact('user'));
+        return view('home', compact('user', 'picture'));
     }
 
     public function account()

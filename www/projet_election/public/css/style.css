@@ -109,11 +109,13 @@ body{
 
 
 .presentation_home{
+    display: inline-block;
     background-image: linear-gradient(to bottom, #8f0868 , #650da3);
     padding:5%;
     justify-content: center;
     .right{
-        padding:5%;
+        justify-content: center;
+        border-radius: 20%;
         display: flex;
         float:none;
         width:80%;
@@ -123,9 +125,10 @@ body{
         float:none;
         width:80%;
         h1{
-            text-align:center;
+            text-align: center;
             font-size: 2rem;
             color:white;
+            font-weight: bold;
         }
         p{
             font-size: 1rem;
@@ -138,22 +141,23 @@ body{
 
     .presentation_home{
         justify-content: normal;
-        height:30rem;
         .right{
+            justify-content: normal;
             display: flex;
             float:right;
             width:40%;
+            border-radius: 100px;
         }
         .left{
             display: flex;
             float:left;
             width:40%;
             h1{
-                font-size: 3rem;
+                font-size: 2.25rem;
                 color:white;
             }
             p{
-                font-size: 2rem;
+                font-size: 1.25rem;
                 color:white;
             }
         }

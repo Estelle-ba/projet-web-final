@@ -16,12 +16,14 @@
                 {{$user->name}} {{$user->lastname}}
             </h1>
             <p>
-                @if($user->class_id == null)
+                @can('isAdmin')
                     Gestionnaire
-                @else
+                @elsecan('isStudent')
                     Niveau : {{$class -> name}}
                     <br>Lieu d'étude : {{$class -> place}}
-                @endif
+                @elsecan('isTeacher')
+                    Professeur
+                @endcan
             </p>
         </div>
         <div class="account_right">
