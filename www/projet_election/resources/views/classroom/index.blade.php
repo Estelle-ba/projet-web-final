@@ -3,13 +3,42 @@
 @section('content')
     <div class="classroom-admin">
         <div class="left">
+            <button onclick="appear('calendar')">Calendrier</button>
+
+            <button class="accordion">Délégués et suppléants</button>
+            <div class="panel">
+                <button onclick="appear('all_representatives')">Tous les délégués</button>
+                @foreach($class_id as $c)
+                    <button onclick="appear('representatives{{$c->id}}')">{{$c->name}} - {{$c->place}}</button>
+                @endforeach
+            </div>
+
+            <button class="accordion">Section 3</button>
+            <div class="panel">
+                @foreach($class_id as $c)
+                    <button>{{$c->name}} - {{$c->place}}</button>
+                @endforeach
+            </div>
         </div>
-        @can('isAdmin')
-            @include('classroom.new_event')
-        @endcan
-        @include('classroom.representatives')
-        @include('classroom.questions')
+
+        <div class="right">
+            @can('isAdmin')
+                @include('classroom.new_event')
+            @else
+                @include('classroom.event')
+            @endcan
+            @include('classroom.representatives')
+            @include('classroom.questions')
+        </div>>
     </div>
+    @can('isAdmin')
+        <form method="GET" action="{{route('generate-pdf')}}">
+            <button type="submit"
+                    class="fixed bottom-4 right-4 bg-blue-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-blue-700">
+                PDF des délégués
+            </button>
+        </form>
+    @endcan
 @endsection
 @push('scripts')
     <script src="{{ asset('js/block_appear.js') }}"></script>

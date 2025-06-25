@@ -1,7 +1,6 @@
-<div class="right">
-    <div id="all_representatives" >
+<div id="all_representatives">
         @foreach($class_id as $c)
-            <div id="representatives{{$c->id}}" class="representative">
+            <div id="representatives{{$c->id}}" class="representative" style="display:none">
                 <h2>{{$c->name}} - {{$c->place}} </h2>
                 @php
 
@@ -62,7 +61,7 @@
 
             </div>
         @endforeach
-    </div>
+
 </div>
 
 
