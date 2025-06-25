@@ -130,7 +130,7 @@ body{
             color:white;
             font-weight: bold;
         }
-        p{
+        p, li{
             font-size: 1rem;
             color:white;
         }
@@ -156,7 +156,7 @@ body{
                 font-size: 2.25rem;
                 color:white;
             }
-            p{
+            p, li{
                 font-size: 1.25rem;
                 color:white;
             }
@@ -404,7 +404,7 @@ body{
             border-radius: 0.5em;
             box-shadow: 0 10px 20px rgba(0,0,0,1);
             margin-top: 2.5%;
-            margin-bottom: 2.5%;
+            margin-bottom: 15%;
             margin-left: 0;
             margin-right: 0;
             .candidate {
@@ -455,36 +455,35 @@ body{
         }
     }
     .left{
+        background-image: linear-gradient(to bottom, #8f0868 , #650da3);
         display: flex;
         float:none;
         width:100%;
         flex-direction: column;
         padding-bottom: 5%;
         margin-bottom:5%;
-        border-bottom: solid;
-        border-color: white;
         .accordion {
-            background-color: #eee;
-            color: #444;
+            color:white;
             cursor: pointer;
-            padding: 18px;
             width: 100%;
-            text-align: left;
-            border: none;
+            text-align: center;
+            border-bottom: none;
             outline: none;
             transition: 0.4s;
-        }
-
-
-        .active, .accordion:hover {
-            background-color: #ccc;
+            border-bottom: solid;
+            border-color: white;
         }
 
         .panel {
-            padding: 0 18px;
-            background-color: white;
             display: none;
             overflow: hidden;
+            .list_panel{
+                width: 100%;
+                background-color: white;
+                color:#8f0868;
+                border: #8f0868 solid;
+                border-top : none;
+            }
         }
     }
 }
@@ -543,14 +542,65 @@ body{
         }
         .left{
             margin-bottom:0;
-            border-bottom: none;
-            padding : 1%;
             display: flex;
             float:none;
             width:20%;
-            h2, p {
-                color:white;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            padding: 1%;
+            .accordion {
+                font-size: 1.5rem;
+                cursor: pointer;
+                width: 100%;
+                text-align: center;
+                outline: none;
+                transition: 0.4s;
             }
+
+            .panel {
+                display: none;
+                font-size: 1rem;
+                overflow: hidden;
+            }
+        }
+    }
+}
+
+.fixed_button{
+    position :fixed;
+    width: 1rem;
+    height: 1rem;
+    bottom: 10%;
+    right: 10%;
+    .button_phone{
+        border-radius: 20%;
+        padding:4px;
+        background: #8f0868;
+        color:#ffffff;
+        display:block;
+    }
+    .button_computer{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .fixed_button{
+        height: 5rem;
+        width: 5rem;
+        right: 5%;
+        bottom: 5%;
+        .button_phone{
+            display: none;
+        }
+        .button_computer{
+            height: 100%;
+            width: 100%;
+            border-radius: 20%;
+            padding:4px;
+            background: #8f0868;
+            color:#ffffff;
+            display:block;
         }
     }
 }

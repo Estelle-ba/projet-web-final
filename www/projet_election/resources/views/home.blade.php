@@ -3,6 +3,7 @@
 @section('content')
     <div class="presentation_home">
         <div class="left">
+            {{--The title that change according to the role of the user--}}
             <h1>
                 @can('isAdmin')
                     Bienvenue sur le Portail Administratif de l'Établissement
@@ -13,12 +14,49 @@
                 @endcan
             </h1>
         </div>
-        <img class="right"
-             src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fzionkabbalah.com%2Fwp-content%2Fuploads%2F2020%2F01%2FShrek.jpg&f=1&nofb=1&ipt=333ec5de3a9189ae7ca30d745561a629b568c02250003a47209e19c1953ef744"
-             alt="Se connecter"/>
+
+        {{--A Carroussel with the images of the Coding Factory--}}
+        <img id="carroussel" class="right"
+             src="https://codingfactory.fr/wp-content/uploads/2023/06/MicrosoftTeams-image-6.jpg"
+             alt="Image of the coding factory"/>
+        <img id="carroussel" class="right" style="display:none"
+             src="https://codingfactory.fr/wp-content/uploads/2023/06/MicrosoftTeams-image-5.jpg"
+             alt="Image of the coding factory"/>
+        <img id="carroussel" class="right" style="display:none"
+             src="https://sp-ao.shortpixel.ai/client/to_webp,q_lossy,ret_img/https://codingfactory.fr/wp-content/uploads/2023/04/Photo-Coding-11.jpg"
+             alt="Image of the coding factory"/>
+        <img id="carroussel " class="right" style="display:none"
+             src="https://sp-ao.shortpixel.ai/client/to_webp,q_lossy,ret_img/https://codingfactory.fr/wp-content/uploads/2023/06/Photo-Coding-24.jpg"
+             alt="Image of the coding factory"/>
+        <img id="carroussel " class="right" style="display:none"
+             src="https://sp-ao.shortpixel.ai/client/to_webp,q_lossy,ret_img/https://codingfactory.fr/wp-content/uploads/2023/04/Photo-Coding-9.jpg"
+             alt="Image of the coding factory"/>
+        <img id="carroussel" class="right" style="display:none"
+             src="https://sp-ao.shortpixel.ai/client/to_webp,q_lossy,ret_img/https://codingfactory.fr/wp-content/uploads/2023/06/MicrosoftTeams-image-6.jpg"
+             alt="Image of the coding factory"/>
+        <img id="carroussel " class="right" style="display:none"
+             src="https://sp-ao.shortpixel.ai/client/to_webp,q_lossy,ret_img/https://codingfactory.fr/wp-content/uploads/2023/04/Photo-Coding-22.jpg"
+             alt="Image of the coding factory"/>
+        <img id="carroussel " class="right" style="display:none"
+             src="https://sp-ao.shortpixel.ai/client/to_webp,q_lossy,ret_img/https://codingfactory.fr/wp-content/uploads/2023/06/Photo-Coding-28.jpg"
+             alt="Image of the coding factory"/>
+        <img id="carroussel" class="right" style="display:none"
+             src="https://sp-ao.shortpixel.ai/client/to_webp,q_lossy,ret_img/https://codingfactory.fr/wp-content/uploads/2023/06/MicrosoftTeams-image-9.jpg"
+             alt="Image of the coding factory"/>
+        <img id="carroussel " class="right" style="display:none"
+             src="https://sp-ao.shortpixel.ai/client/to_webp,q_lossy,ret_img/https://codingfactory.fr/wp-content/uploads/2023/06/MicrosoftTeams-image-10.jpg"
+             alt="Image of the coding factory"/>
+        <img id="carroussel " class="right" style="display:none"
+             src="https://sp-ao.shortpixel.ai/client/to_webp,q_lossy,ret_img/https://codingfactory.fr/wp-content/uploads/2023/06/Photo-Coding-6.jpg"
+             alt="Image of the coding factory"/>
+        <img id="carroussel " class="right" style="display:none"
+             src="https://sp-ao.shortpixel.ai/client/to_webp,q_lossy,ret_img/https://codingfactory.fr/wp-content/uploads/2023/06/Photo-Coding-21.jpg"
+             alt="Image of the coding factory"/>
+
         <div class="left">
-            <p>
+            {{--The welcome paragraph that change according to the role of the user--}}
             @can('isAdmin')
+                <p>
                     Bonjour {{$user -> name}} {{$user -> lastname}}
                     <br>Nous sommes ravis de vous retrouver sur la plateforme de gestion de notre établissement scolaire.
                     <br>En tant qu’administrateur, vous avez accès à l’ensemble des outils essentiels pour assurer le bon fonctionnement de l’école :
@@ -35,7 +73,9 @@
                     <br>Merci pour votre engagement quotidien pour la réussite de notre établissement.
                     <br>Bonne session de travail,
                     <br>L’équipe de Direction
+                </p>
             @elsecan('isStudent')
+                <p>
                     Bonjour {{$user -> name}} {{$user -> lastname}}
                     <br>Bienvenue sur le portail universitaire. Cet espace est conçu pour vous accompagner tout au long de votre parcours académique.
                     <br>Depuis votre compte, vous pouvez :
@@ -51,7 +91,9 @@
                     <br>Nous vous souhaitons une excellente continuation dans votre parcours et restons à votre écoute pour toute question ou difficulté.
                     <br>Bonne navigation et bon courage dans vos études,
                     <br>L’équipe pédagogique et administrative de l’université
+                </p>
             @elsecan('isTeacher')
+                <p>
                     Bonjour {{$user -> name}} {{$user -> lastname}}
                     <br>Nous vous souhaitons la bienvenue sur la plateforme pédagogique et administrative de l’université.
                     <br>Cet espace a été conçu pour faciliter votre activité d’enseignement, de suivi des étudiants et de gestion académique.
@@ -69,9 +111,12 @@
                     <br>L’équipe administrative reste à votre disposition pour toute assistance.
                     <br>Bonne session et bon enseignement,
                     <br>L’équipe de Direction de l’Université
+                </p>
             @endcan
-            </p>
         </div>
-
     </div>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/carroussel.js') }}"></script>
+@endpush

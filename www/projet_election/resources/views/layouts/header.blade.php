@@ -1,3 +1,4 @@
+{{--The header when the user is connected--}}
 @auth
     <header class="header_home">
         <div class="icons">
@@ -53,32 +54,21 @@
                 </a>
 
                 <!-- Common Life logo -->
-                @can('isAdmin')
+                @can('isStudent')
+                    {{--Change the route of the classroom if the user is a student or not--}}
+                    <a href="{{route('election.index')}}" >
+                        <div class="img_computer">
+                            <img decoding="async"
+                                 src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F010%2F159%2F990%2Fnon_2x%2Fpeople-icon-sign-symbol-design-free-png.png&f=1&nofb=1&ipt=0d8e52b7ccda88f0176d59c1783a55c9933ca93e7222cf3c694b9c8b0f620a85"
+                                 alt="Logo Home"/>
+                            <p>Vie de classe</p>
+                        </div>
+                        <img class="img_phone" decoding="async"
+                             src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F010%2F159%2F990%2Fnon_2x%2Fpeople-icon-sign-symbol-design-free-png.png&f=1&nofb=1&ipt=0d8e52b7ccda88f0176d59c1783a55c9933ca93e7222cf3c694b9c8b0f620a85"
+                             alt="Logo Home"/>
+                    </a>
+                @else
                     <a href="{{route('classroom-manager')}}" >
-                        <div class="img_computer">
-                            <img decoding="async"
-                                 src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F010%2F159%2F990%2Fnon_2x%2Fpeople-icon-sign-symbol-design-free-png.png&f=1&nofb=1&ipt=0d8e52b7ccda88f0176d59c1783a55c9933ca93e7222cf3c694b9c8b0f620a85"
-                                 alt="Logo Home"/>
-                            <p>Vie de classe</p>
-                        </div>
-                        <img class="img_phone" decoding="async"
-                             src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F010%2F159%2F990%2Fnon_2x%2Fpeople-icon-sign-symbol-design-free-png.png&f=1&nofb=1&ipt=0d8e52b7ccda88f0176d59c1783a55c9933ca93e7222cf3c694b9c8b0f620a85"
-                             alt="Logo Home"/>
-                    </a>
-                @elsecan('isStudent')
-                    <a href="{{route('election.index')}}" >
-                        <div class="img_computer">
-                            <img decoding="async"
-                                 src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F010%2F159%2F990%2Fnon_2x%2Fpeople-icon-sign-symbol-design-free-png.png&f=1&nofb=1&ipt=0d8e52b7ccda88f0176d59c1783a55c9933ca93e7222cf3c694b9c8b0f620a85"
-                                 alt="Logo Home"/>
-                            <p>Vie de classe</p>
-                        </div>
-                        <img class="img_phone" decoding="async"
-                             src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F010%2F159%2F990%2Fnon_2x%2Fpeople-icon-sign-symbol-design-free-png.png&f=1&nofb=1&ipt=0d8e52b7ccda88f0176d59c1783a55c9933ca93e7222cf3c694b9c8b0f620a85"
-                             alt="Logo Home"/>
-                    </a>
-                @elsecan('isTeacher')
-                    <a href="{{route('election.index')}}" >
                         <div class="img_computer">
                             <img decoding="async"
                                  src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F010%2F159%2F990%2Fnon_2x%2Fpeople-icon-sign-symbol-design-free-png.png&f=1&nofb=1&ipt=0d8e52b7ccda88f0176d59c1783a55c9933ca93e7222cf3c694b9c8b0f620a85"
@@ -93,6 +83,7 @@
 
                 <!-- Account logo -->
                 <a href="{{route('account')}}" >
+                    {{--Take the user's profile picture or put a default one if there's no one--}}
                     @if($picture == null)
                         <img class="img_computer" style="border-radius: 100%;" decoding="async"
                             src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.istockphoto.com%2Fvectors%2Fvector-illustration-male-silhouette-profile-picture-with-question-on-vector-id937695038%3Fk%3D20%26m%3D937695038%26s%3D170667a%26w%3D0%26h%3DVwqo48FSEf_hE_ZaESBiEGH6YCbq7n7y6opPpWr1lzg%3D&f=1&nofb=1&ipt=81847cb771d101797b29929664a5ed1b57ef0716efecff7475bb51e2f44d352e"
@@ -117,6 +108,7 @@
 @endauth
 
 
+{{--The header when the user is not connected--}}
 @guest
     <header class="header_welcome">
         <div >

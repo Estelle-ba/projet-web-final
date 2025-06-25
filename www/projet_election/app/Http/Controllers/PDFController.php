@@ -10,22 +10,21 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class PDFController extends Controller
 {
+
+    //Function to generate the PDF of the representatives
     public function generatePDF()
     {
-        $users = User::all();
-        $representative = Representative::all();
-        $class = ClassModel::all();
+        //Take all the data needed
+        $users = User::all();//The users
+        $representative = Representative::all();//The representatives
+        $class = ClassModel::all();//The class
+        $title = 'Les délégués et suppléants';
+        $date = date('Y');
 
-        $data = [
-            'title' => 'Les délégués et suppléants',
-            'date' => date('Y'),
-            'users' => $users,
-            'representative' => $representative,
-            'class' =>$class
-        ];
+        //Load the view with all the data needed
+        $pdf = PDF::loadView('pdf.Representatives', compact('users', 'representative', 'class', 'title', 'date'));
 
-        $pdf = PDF::loadView('pdf.Representatives', $data);
-
-        return $pdf->download('Les délégués et suppléants de l\'année '. date('Y'). '.pdf');
+        //Download the pdf
+        return $pdf->download('Les délégués et suppléants de l\'année '. $date. '.pdf');
     }
 }

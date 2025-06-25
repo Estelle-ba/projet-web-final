@@ -23,18 +23,28 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+    //Function to go to the home page
     public function index()
     {
-        $user = Auth::user();
-        $picture = Image_Profile::where('user_id', $user->id)->first();
+        //Take all the data needed
+        $user = Auth::user(); //The actual user
+        $picture = Image_Profile::where('user_id', $user->id)->first(); //His profile picture
+
+        //Go to the view with all the data needed
         return view('home', compact('user', 'picture'));
     }
 
+
+    //Function to go to the account page
     public function account()
     {
-        $user = Auth::user();
-        $class = ClassModel::where('id', $user->class_id)->first();
-        $picture = Image_Profile::where('user_id', $user->id)->first();
+        //Take all the data needed
+        $user = Auth::user(); //The actual user
+        $class = ClassModel::where('id', $user->class_id)->first();//His class
+        $picture = Image_Profile::where('user_id', $user->id)->first();//His profile picture
+
+        //Go to the view with all the data needed
         return view('account', compact('user', 'class', 'picture'));
     }
 

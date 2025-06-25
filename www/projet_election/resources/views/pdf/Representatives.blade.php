@@ -14,6 +14,7 @@
     </style>
 </head>
 <body>
+    {{--Add the Coding Factory logo on the top of the file--}}}
     <div >
         <div>
             <div style="display:flex; flex-direction: row; width:100%">
@@ -28,12 +29,17 @@
         </div>
     </div>
 <main>
+
+    {{--Give a name of the PDF document--}}
     <h1>{{ $title }} de l'année {{ $date }}</h1>
+
+    {{--A table with all the representative by class--}}
     @foreach($representative as $r)
         <h3>Délégué et suppléant de {{$class[$r->class_id -1] -> name}} {{$class[$r->class_id -1] -> place}}</h3>
 
         <table style="padding-top:10px">
 
+            {{--The head of the table--}}
             <tr>
                 <th>Role</th>
                 <th>Prénom</th>
@@ -41,19 +47,21 @@
                 <th>Email</th>
             </tr>
 
-                <tr>
-                    <td>Délégué</td>
-                    <td>{{ $users[$r->id_representative]->name}}</td>
-                    <td>{{ $users[$r->id_representative]->lastname }}</td>
-                    <td>{{ $users[$r->id_representative]->email }}</td></tr>
+            {{--The information about the representative--}}
+            <tr>
+                <td>Délégué</td>
+                <td>{{ $users[$r->id_representative]->name}}</td>
+                <td>{{ $users[$r->id_representative]->lastname }}</td>
+                <td>{{ $users[$r->id_representative]->email }}</td>
+            </tr>
 
+            {{--The information about his subsitute--}}
             <tr>
                 <td>Suppléant</td>
                 <td>{{ $users[$r->id_suppleant]->name}}</td>
                 <td>{{ $users[$r->id_suppleant]->lastname }}</td>
                 <td>{{ $users[$r->id_suppleant]->email }}</td>
             </tr>
-
         </table>
     @endforeach
 </main>
