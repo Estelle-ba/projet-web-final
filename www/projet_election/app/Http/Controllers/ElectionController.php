@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Image_Profile;
 use App\Models\User;
 use App\Models\Representative;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ElectionController extends Controller
 {
@@ -14,7 +16,8 @@ class ElectionController extends Controller
         $user = auth()->user();
         $alluser = User::all();
         $candidats = Representative::all();
-        return view('election.index', compact('candidats', 'user', 'alluser'));
+        $picture = Image_Profile::where('user_id', $user->id)->first();
+        return view('election.index', compact('candidats', 'user', 'alluser', 'picture'));
     }
 
 

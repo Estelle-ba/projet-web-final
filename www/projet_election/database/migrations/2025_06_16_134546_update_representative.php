@@ -23,6 +23,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('representative', function (Blueprint $table) {
+            $table->dropColumn('id_representative');
+            $table->dropColumn('id_suppleant');
+        });
     }
 };

@@ -1,0 +1,51 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('questions', function (Blueprint $table) {
+            $table->id()->autoIncrement();
+            $table->string('question');
+            $table->int('class_id');
+            $table->int('user_id');
+            $table->timestamps();
+        });
+
+        Schema::create('answers', function (Blueprint $table) {
+            $table->id()->autoIncrement();
+            $table->string('answer');
+            $table->int('question_id');
+            $table->int('class_id');
+            $table->int('user_id');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('questions');
+        Schema::dropIfExists('answers');
+        Schema::table('questions', function (Blueprint $table) {
+            $table->dropColumn('question');
+            $table->dropColumn('class_id');
+            $table->dropColumn('user_id');
+        });
+        Schema::table('answers', function (Blueprint $table) {
+            $table->dropColumn('answer');
+            $table->dropColumn('question_id');
+            $table->dropColumn('class_id');
+            $table->dropColumn('user_id');
+        });
+    }
+};

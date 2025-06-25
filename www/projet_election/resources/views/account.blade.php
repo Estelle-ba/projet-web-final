@@ -56,7 +56,7 @@
                 <button class="button_1" onclick="openModal('change_profile_picture')">
                     Changer de photo
                 </button>
-                <form  method="Post" action="{{route('accountlogout')}}" class="button_2">
+                <form  method="Post" action="{{route('logout')}}" class="button_2">
                     @csrf
                     <!-- standard logo -->
                     <button type="submit"  >
@@ -96,5 +96,5 @@
     </div>
 @endsection
 @push('scripts')
-    <script src="{{ asset('js/modal.js') }}"></script>
+    <script src="{{ asset('js/block_appear.js') }}"></script>
 @endpush
