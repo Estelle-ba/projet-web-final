@@ -86,15 +86,15 @@
                     {{--Take the user's profile picture or put a default one if there's no one--}}
                     @if($picture == null)
                         <img class="img_computer" style="border-radius: 100%;" decoding="async"
-                            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.istockphoto.com%2Fvectors%2Fvector-illustration-male-silhouette-profile-picture-with-question-on-vector-id937695038%3Fk%3D20%26m%3D937695038%26s%3D170667a%26w%3D0%26h%3DVwqo48FSEf_hE_ZaESBiEGH6YCbq7n7y6opPpWr1lzg%3D&f=1&nofb=1&ipt=81847cb771d101797b29929664a5ed1b57ef0716efecff7475bb51e2f44d352e"
-                            alt=""/>
+                             src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.istockphoto.com%2Fvectors%2Fvector-illustration-male-silhouette-profile-picture-with-question-on-vector-id937695038%3Fk%3D20%26m%3D937695038%26s%3D170667a%26w%3D0%26h%3DVwqo48FSEf_hE_ZaESBiEGH6YCbq7n7y6opPpWr1lzg%3D&f=1&nofb=1&ipt=81847cb771d101797b29929664a5ed1b57ef0716efecff7475bb51e2f44d352e"
+                             alt=""/>
                         <img class="img_phone" style="border-radius: 100%;" decoding="async"
                              src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.istockphoto.com%2Fvectors%2Fvector-illustration-male-silhouette-profile-picture-with-question-on-vector-id937695038%3Fk%3D20%26m%3D937695038%26s%3D170667a%26w%3D0%26h%3DVwqo48FSEf_hE_ZaESBiEGH6YCbq7n7y6opPpWr1lzg%3D&f=1&nofb=1&ipt=81847cb771d101797b29929664a5ed1b57ef0716efecff7475bb51e2f44d352e"
                              alt=""/>
                     @else()
                         <img class="img_computer" style="border-radius: 100%;" decoding="async"
-                            src="{{asset('storage/' . $picture->image)}}"
-                            alt=""/>
+                             src="{{asset('storage/' . $picture->image)}}"
+                             alt=""/>
                         <img class="img_phone" style="border-radius: 100%;" decoding="async"
                              src="{{asset('storage/' . $picture->image)}}"
                              alt=""/>
@@ -116,22 +116,22 @@
             <div>
                 <div style="display:flex; flex-direction: row; width:100%">
 
-                        <div>
-                            <a class="fusion-logo-link"  href="{{route('/')}}" >
-                                <!-- connection logo -->
-                                <img decoding="async"
-                                     src="https://sp-ao.shortpixel.ai/client/to_webp,q_lossy,ret_img,w_150,h_80/https://codingfactory.fr/wp-content/uploads/2023/10/Untitled-design-12.jpg"
-                                     width="150" height="80" alt="Coding Factory by ESIEE-IT Logo"/>
-                            </a>
-                        </div>
-                        <div style="display: flex; width:100%;">
-                            <a style="width:100%" href="{{route('login')}}" >
-                                <!-- standard logo -->
-                                <img style="float:right; margin-right: 20px"
-                                     src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ficon-library.com%2Fimages%2Flogin-icon-images%2Flogin-icon-images-0.jpg&f=1&nofb=1&ipt=6efc5f90577cf528a6387fe48c9508b067fd54b0869bde8bd922e20bb8ea2b09"
-                                     width="80" height="80" alt="Se connecter"/>
-                            </a>
-                        </div>
+                    <div>
+                        <a class="fusion-logo-link"  href="{{route('/')}}" >
+                            <!-- connection logo -->
+                            <img decoding="async"
+                                 src="https://sp-ao.shortpixel.ai/client/to_webp,q_lossy,ret_img,w_150,h_80/https://codingfactory.fr/wp-content/uploads/2023/10/Untitled-design-12.jpg"
+                                 width="150" height="80" alt="Coding Factory by ESIEE-IT Logo"/>
+                        </a>
+                    </div>
+                    <div style="display: flex; width:100%;">
+                        <a style="width:100%" href="{{route('login')}}" >
+                            <!-- standard logo -->
+                            <img style="float:right; margin-right: 20px"
+                                 src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ficon-library.com%2Fimages%2Flogin-icon-images%2Flogin-icon-images-0.jpg&f=1&nofb=1&ipt=6efc5f90577cf528a6387fe48c9508b067fd54b0869bde8bd922e20bb8ea2b09"
+                                 width="80" height="80" alt="Se connecter"/>
+                        </a>
+                    </div>
 
                 </div>
             </div>

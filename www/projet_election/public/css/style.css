@@ -453,6 +453,52 @@ body{
                 }
             }
         }
+        .table{
+            border-radius: 0.5em;
+            box-shadow: 0 10px 20px rgba(0,0,0,1);
+            margin-top: 2.5%;
+            margin-bottom: 15%;
+            margin-left: 0;
+            margin-right: 0;
+            border-collapse: collapse;
+            width : 100%;
+            display: flex;
+            flex-direction:column;
+            padding:1%;
+            .day_computer{
+                display: none;
+            }
+            .day_phone{
+                font-weight: bold;
+                color:#8f0868;
+                display: flex;
+            }
+            .row{
+                width : 100%;
+                display: flex;
+                flex-direction:row;
+            }
+            .title{
+                width: 100%;
+                text-align: center;
+                font-weight: bold;
+                height: 5rem;
+                font-size: 1.5rem;
+                color: #650da3;
+            }
+            .other_month, .actual_month, .day_phone{
+                width : calc(100%/7);
+                height: 2.5rem;
+                text-align: center;
+            }
+            .other_month{
+               color: lightgrey;
+            }
+            .actual_month{
+                cursor: pointer;
+            }
+
+        }
     }
     .left{
         background-image: linear-gradient(to bottom, #8f0868 , #650da3);
@@ -538,6 +584,31 @@ body{
                     }
                 }
             }
+            .table{
+                margin-top: 5%;
+                margin-bottom: 5%;
+                margin-left: 2%;
+                margin-right: 2%;
+                width: 95%;
+                .day_computer{
+                    font-weight: bold;
+                    color:#8f0868;
+                    text-align: center;
+                    width : calc(100%/7);
+                    display: flex;
+                    height:5rem;
+                    font-size: 1rem;
+                }
+                .day_phone{
+                    display: none;
+                }
+                .other_month, .actual_month, .day_computer {
+                    height: 5rem;
+                }
+                .title{
+                    font-size: 2rem;
+                }
+            }
 
         }
         .left{
@@ -562,6 +633,7 @@ body{
                 font-size: 1rem;
                 overflow: hidden;
             }
+
         }
     }
 }

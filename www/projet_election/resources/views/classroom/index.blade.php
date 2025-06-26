@@ -56,6 +56,7 @@
 
 @push('scripts')
     <script src="{{ asset('js/block_appear.js') }}"></script>
+    <script src="{{ asset('js/calendar.js') }}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Modal de candidature
