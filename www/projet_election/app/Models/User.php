@@ -2,34 +2,31 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Image_Profile; // Assurez-vous que ce use correspond à votre namespace
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var list<string>
+     * @var array<int,string>
      */
     protected $fillable = [
         'name',
-        'lastname',
         'email',
         'password',
-        'phone_number',
-        'role',
+        // ... autres champs
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * The attributes that should be hidden for arrays.
      *
-     * @var list<string>
+     * @var array<int,string>
      */
     protected $hidden = [
         'password',
@@ -37,14 +34,21 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the attributes that should be cast.
+     * The attributes that should be cast.
      *
-     * @return array<string, string>
+     * @var array<string,string>
      */
-    protected function casts(): array
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    /**
+     * Relation One-to-One vers l'image de profil.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function profileImage()
     {
-        return [
-            'password' => 'hashed',
-        ];
+        return $this->hasOne(Image_Profile::class, 'user_id');
     }
 }

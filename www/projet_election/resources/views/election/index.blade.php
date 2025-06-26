@@ -13,25 +13,42 @@
         <h1 class="text-2xl font-bold mb-4">Élection des délégués</h1>
 
         {{-- Liste des candidats --}}
-        <ul class="mb-8">
-            @foreach($candidats as $candidat)
-                <li class="mb-2">
-                    <button
-                        class="text-blue-600 hover:underline open-video"
-                        data-video-url="{{ $candidat->video_link }}"
-                        data-name="{{ $candidat->name }} {{ $candidat->lastname }}"
-                        title="{{ $candidat->description }}"
-                    >
-                        {{ $candidat->name }} {{ $candidat->lastname }}
-                    </button>
-                    @if($candidat->suppleant)
-                        &mdash; Suppléant : {{ $candidat->suppleant }}
-                    @endif
-                </li>
-            @endforeach
-        </ul>
+            <ul class="mb-8">
+                @foreach($candidats as $candidat)
+                    <li class="mb-4 flex items-center">
+                        {{-- Affiche l'avatar ou un placeholder --}}
+                        @php
+                            $img = $candidat->user && $candidat->user->profileImage
+                                 ? Storage::url($candidat->user->profileImage->image)
+                                 : asset('images/avatar-placeholder.png');
+                        @endphp
+                        <img
+                            src="{{ $img }}"
+                            alt="Photo de {{ $candidat->name }} {{ $candidat->lastname }}"
+                            class="w-12 h-12 rounded-full mr-3 object-cover"
+                        >
 
-        {{-- Bouton “Se présenter” --}}
+                        {{-- Bouton qui ouvre la modal vidéo --}}
+                        <button
+                            class="text-blue-600 hover:underline open-video"
+                            data-video-url="{{ $candidat->video_link }}"
+                            data-name="{{ $candidat->name }} {{ $candidat->lastname }}"
+                            title="{{ $candidat->description }}"
+                        >
+                            {{ $candidat->name }} {{ $candidat->lastname }}
+                        </button>
+
+                        @if($candidat->suppleant)
+                            <span class="ml-2 text-sm text-gray-600">
+                  &mdash; Suppléant : {{ $candidat->suppleant }}
+                </span>
+                        @endif
+                    </li>
+                @endforeach
+            </ul>
+
+
+            {{-- Bouton “Se présenter” --}}
         <button
             id="openModal"
             class="fixed bottom-4 right-4 bg-blue-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-blue-700"
