@@ -16,6 +16,7 @@ class ElectionController extends Controller
         $user = auth()->user();
         $alluser = User::all();
         $candidats = Representative::all();
+        $candidats = Representative::with('user.profileImage')->get();
         $picture = Image_Profile::where('user_id', $user->id)->first();
         return view('election.index', compact('candidats', 'user', 'alluser', 'picture'));
     }
