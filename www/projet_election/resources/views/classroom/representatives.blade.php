@@ -70,28 +70,3 @@
         </div>
     @endforeach
 </div>
-
-
-<div
-    id="videoModal"
-    class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center hidden z-50"
->
-    <div class="bg-white rounded-lg overflow-hidden w-full max-w-3xl">
-        <div class="flex justify-between items-center p-2 border-b">
-            <h2 id="videoTitle" class="text-lg font-semibold px-4"></h2>
-            <button id="closeVideo" class="text-gray-700 hover:text-gray-900 text-2xl px-4">&times;</button>
-        </div>
-        <div class="p-4">
-            <div class="relative" style="padding-top:56.25%;">
-                <iframe
-                    id="videoFrame"
-                    class="absolute top-0 left-0 w-full h-full"
-                    src=""
-                    frameborder="0"
-                    allow="autoplay; encrypted-media"
-                    allowfullscreen
-                ></iframe>
-            </div>
-        </div>
-    </div>
-</div>

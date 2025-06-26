@@ -44,7 +44,6 @@ function GenerateTable(month, year) {
     }
     table += '</div>';
 
-
     table += '<div class="row">';
     for (let day of days_phone) {
         table += `<div class="day_phone">${day}</div>`;
@@ -74,13 +73,16 @@ function GenerateTable(month, year) {
                 table += '<div class="row">';
             }
 
-            table += `<div class="actual_month">${(date.getDate() < 10) ? '0' + date.getDate() : date.getDate()}</div>`;
+            date.setDate(date.getDate()+1);
+            let day_convert = date.toISOString().split('T')[0];
+            table += `<div class="actual_month" id="${day_convert}" onclick="calendarOpenModal('new_event', '${day_convert}')">
+            ${(date.getDate() < 10) ? '0' + date.getDate() : date.getDate()}</div>`;
 
             if (day % 7 === 0) {
                 table += '</div>';
             }
 
-            date.setDate(date.getDate()+1);
+
             day++;
             counter++;
         }
@@ -100,4 +102,29 @@ function GenerateTable(month, year) {
     table += '</div>';
 
     return table;
+}
+
+
+//Function for the modal
+let calendarlOpened = false
+
+function calendarOpenModal(id, date) {
+    //When the button to activate a modal is clicked and there's not another one opened
+    if(calendarlOpened === false) {
+        //The modal will be opened
+        calendarlOpened = true;
+        console.log(date);
+        let form = document.getElementById('form');
+        let title = document.createElement('h5');
+        title.innerText = `Ajouter un évènement le ${date}`;
+        form.prepend(title);
+
+        document.getElementById(id).style.display = 'block';
+
+    }
+}
+function calendarCloseModal(id) {
+    //When the button to close a modal is clicked, the modal will be closed
+    document.getElementById(id).style.display = 'none';
+    calendarlOpened = false;
 }
