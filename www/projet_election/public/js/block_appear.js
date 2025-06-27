@@ -85,3 +85,143 @@ function menu_toggle(id){
         menu_toggle_open = true;
     }
 }
+
+let all=[];
+let eventpeople=[];
+let element;
+let form = document.getElementById('form');
+let temp;
+
+function event_change(select){
+    let id = select.value;
+    for(let i = 0; i < all.length; i++) {
+        element = all[i];
+        element.style.display = 'none';
+    }
+    all=[];
+    switch(id){
+        case 'meeting':
+            temp = form.querySelector('[id = people_type]');
+            temp.style.display = 'block';
+            all.push(temp);
+            temp = form.querySelectorAll('[class = other]');
+            for(let i = 0; i < temp.length; i++) {
+                element = temp[i];
+                element.style.display = 'block';
+                all.push(element);
+            }
+
+            temp = form.querySelector('[id = select_hour]');
+            temp.style.display = 'block';
+            all.push(temp);
+
+            temp = form.querySelectorAll('[class = hour]');
+            for(let i = 0; i < temp.length; i++) {
+                element = temp[i];
+                element.style.display = 'block';
+                all.push(element);
+            }
+
+            break;
+        case 'class_council':
+            temp = form.querySelector('[id = people_type]');
+            temp.style.display = 'block';
+            all.push(temp);
+            temp = form.querySelector('[id = select_hour]');
+            temp.style.display = 'block';
+            all.push(temp);
+            temp = form.querySelectorAll('[class = hour]');
+            for(let i = 0; i < temp.length; i++) {
+                element = temp[i];
+                element.style.display = 'block';
+                all.push(element);
+            }
+            break;
+        case 'delegate_election':
+            temp = form.querySelector('[id = attention]');
+            temp.style.display = 'block';
+            all.push(temp);
+            all.push(temp);
+            temp = form.querySelectorAll('[class = day]');
+            for(let i = 0; i < temp.length; i++) {
+                element = temp[i];
+                element.style.display = 'block';
+                all.push(element);
+            }
+            break;
+        default:
+            temp = form.querySelector('[id = people_type]');
+            temp.style.display = 'block';
+            temp = form.querySelector('[id = other_thing]');
+            temp.style.display = 'block';
+            all.push(temp);
+            temp = form.querySelectorAll('[class = other]');
+            for(let i = 0; i < temp.length; i++) {
+                element = temp[i];
+                element.style.display = 'block';
+                all.push(element);
+            }
+            temp = form.querySelector('[id = select_hour]');
+            temp.style.display = 'block';
+            all.push(temp);
+            temp = form.querySelectorAll('[class = hour]');
+            for(let i = 0; i < temp.length; i++) {
+                element = temp[i];
+                element.style.display = 'block';
+                all.push(element);
+            }
+            temp = form.querySelectorAll('[class = day]');
+            for(let i = 0; i < temp.length; i++) {
+                element = temp[i];
+                element.style.display = 'block';
+                all.push(element);
+            }
+            break;
+
+    }
+}
+
+function people_change(select){
+    let id = select.value;
+    for(let i = 0; i < eventpeople.length; i++) {
+        element = eventpeople[i];
+        element.style.display = 'none';
+    }
+    eventpeople=[];
+    switch(id){
+        case 'admin':
+            element = form.querySelector('[id = manager]');
+            console.log(element);
+            element.style.display = 'block';
+            all.push(element);
+            eventpeople.push(element);
+            break;
+        case 'teacher':
+            element = form.querySelector('[id = teacher]');
+            console.log(element);
+            element.style.display = 'block';
+            all.push(element);
+            eventpeople.push(element);
+            break;
+        case 'representative':
+            element = form.querySelector('[id = representative]');
+            element.style.display = 'block';
+            all.push(element);
+            eventpeople.push(element);
+            break;
+        case 'class':
+            element = form.querySelector('[id = class]');
+            element.style.display = 'block';
+            all.push(element);
+            eventpeople.push(element);
+            break;
+        case 'student':
+            element = form.querySelector('[id = student]');
+            element.style.display = 'block';
+            all.push(element);
+            eventpeople.push(element);
+            break;
+        default:
+            break;
+    }
+}

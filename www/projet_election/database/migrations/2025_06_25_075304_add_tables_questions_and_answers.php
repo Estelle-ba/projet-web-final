@@ -14,17 +14,17 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->string('question');
-            $table->int('class_id');
-            $table->int('user_id');
+            $table->integer('class_id')->nullable()->references('id')->on('class')->cascadeOnDelete();
+            $table->integer('user_id')->nullable()->references('id')->on('users')->cascadeOnDelete();
             $table->timestamps();
         });
 
         Schema::create('answers', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->string('answer');
-            $table->int('question_id');
-            $table->int('class_id');
-            $table->int('user_id');
+            $table->integer('question_id')->nullable()->references('id')->on('questions')->cascadeOnDelete();
+            $table->integer('class_id')->nullable()->references('id')->on('class')->cascadeOnDelete();
+            $table->integer('user_id')->nullable()->references('id')->on('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -34,6 +34,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('question');
         Schema::dropIfExists('questions');
         Schema::dropIfExists('answers');
         Schema::table('questions', function (Blueprint $table) {

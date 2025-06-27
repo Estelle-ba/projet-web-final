@@ -28,6 +28,7 @@ Route::post('/account/upload_image', [ImageProfileController::class,'upload_imag
 //Classroom manager pages
 Route::get('/classroom/manager', [ClassroomController::class, 'index'])->name('classroom-manager');
 Route::get('/classroom/manager/generate-pdf', [PDFController::class, 'generatePDF'])->name('generate-pdf');
+Route::post('/classroom/manager/add_event', [ClassroomController::class, 'add_event'])->name('add_event');
 
 
 //Classroom user pages

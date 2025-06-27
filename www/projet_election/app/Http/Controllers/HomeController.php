@@ -36,7 +36,6 @@ class HomeController extends Controller
         }
 
         $picture = Image_Profile::where('user_id', $user->id)->first(); //His profile picture
-
         //Go to the view with all the data needed
         return view('home', compact('user', 'picture'));
     }

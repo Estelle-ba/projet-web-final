@@ -120,7 +120,6 @@ function GenerateTable(month, year) {
 //Function for the modal
 let calendarOpened = false
 
-
 function calendarOpenModal(date) {
     //When the button to activate a modal is clicked and there's not another one opened
     if(calendarOpened === false) {
@@ -135,15 +134,27 @@ function calendarOpenModal(date) {
 
 
         let title = document.createElement('h5');
-        title.className = "modal-title";
+        let date_input = document.createElement('input');
 
-        let existingTitle = form.querySelector('[class = modal-title]');
-        if (existingTitle) {
-            existingTitle.remove();
+
+        let existing_title = form.querySelector('[class = modal-title]');
+        if (existing_title) {
+            existing_title.remove();
         }
+
+        let existing_date = form.querySelector('[class = date]');
+        if (existing_date) {
+            existing_date.remove();
+        }
+        date_input.type = 'hidden';
+        date_input.className = 'date';
+        date_input.name = 'date';
+        date_input.value = date;
+        title.className = "modal-title";
 
         title.innerText = `Ajouter un évènement le ${date_format.toLocaleDateString()} :`;
         form.prepend(title);
+        form.prepend(date_input);
 
         calendarModal.style.display = 'block';
 
@@ -156,3 +167,4 @@ function calendarCloseModal() {
     calendarModal.style.display = 'none';
     calendarOpened = false;
 }
+

@@ -315,7 +315,6 @@ body{
     top: 50%;
     transform: translate(-50%, -50%);
     text-align: left;
-    max-height: 75%;
     flex-direction: column;
     border: #650da3 5px solid;
     h5, p{
@@ -358,6 +357,28 @@ body{
         padding-block-start: 0.625rem;
         padding-block-end: 0.625rem;
         outline: none;
+
+    }
+    form{
+        select {
+            width: 100%;
+            border-radius: 20rem;
+            font-size: 1rem;
+            border: 2.5px solid #8f0868;
+            text-align: center;
+
+            option:hover {
+                background-color: #8f0868;
+                color: white;
+            }
+        }
+        input{
+            width: 100%;
+            border-radius: 20rem;
+            font-size: 1rem;
+            border: 2.5px solid #8f0868;
+            text-align: center;
+        }
 
     }
 }
