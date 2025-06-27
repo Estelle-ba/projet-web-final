@@ -1,7 +1,9 @@
 <div id="calendar" >
+    {{--The script calendar.js create all the calendar--}}}
     <div id="calendar"></div>
-
 </div>
+
+{{--The modal to create an event--}}
 <div class="custom-modal" id="new_event" tabindex="-1" role="dialog" aria-labelledby="new_event">
     <div class="modal-dialog " role="document">
         <div class="modal-content" >
@@ -9,7 +11,7 @@
                 @csrf
                 <div class="container_button">
                     <button type="" class="button_1">Ajouter l'évènement</button>
-                    <button class="button_2" onclick="calendarCloseModal('new_event')">Fermer</button>
+                    <button type="button" class="button_2" onclick="calendarCloseModal('new_event')">Fermer</button>
                 </div>
             </form>
         </div>

@@ -75,7 +75,7 @@ function GenerateTable(month, year) {
 
             date.setDate(date.getDate()+1);
             let day_convert = date.toISOString().split('T')[0];
-            table += `<div class="actual_month" id="${day_convert}" onclick="calendarOpenModal('new_event', '${day_convert}')">
+            table += `<div class="actual_month" id="${day_convert}" onclick="calendarOpenModal('${day_convert}')">
             ${(date.getDate() < 10) ? '0' + date.getDate() : date.getDate()}</div>`;
 
             if (day % 7 === 0) {
@@ -106,25 +106,34 @@ function GenerateTable(month, year) {
 
 
 //Function for the modal
-let calendarlOpened = false
+let calendarOpened = false
 
-function calendarOpenModal(id, date) {
+
+function calendarOpenModal(date) {
     //When the button to activate a modal is clicked and there's not another one opened
-    if(calendarlOpened === false) {
+    if(calendarOpened === false) {
         //The modal will be opened
-        calendarlOpened = true;
-        console.log(date);
+
+        let calendarModal = document.getElementById('new_event');
+
         let form = document.getElementById('form');
+
+        calendarOpened = true;
+
+
         let title = document.createElement('h5');
+
         title.innerText = `Ajouter un évènement le ${date}`;
         form.prepend(title);
 
-        document.getElementById(id).style.display = 'block';
+        calendarModal.style.display = 'block';
 
     }
 }
-function calendarCloseModal(id) {
+function calendarCloseModal() {
+    let calendarModal = document.getElementById('new_event');
+
     //When the button to close a modal is clicked, the modal will be closed
-    document.getElementById(id).style.display = 'none';
-    calendarlOpened = false;
+    calendarModal.style.display = 'none';
+    calendarOpened = false;
 }
