@@ -13,7 +13,14 @@ class ElectionController extends Controller
     // Affiche la page avec le formulaire et la liste
     public function index()
     {
-        $user = auth()->user();
+        //Find the actual user
+        $user = Auth::user();
+
+        //If the user is not connected, he is redirected to the welcome page
+        if($user == null){
+            return redirect()->route('/');
+        }
+
         $alluser = User::all();
         $candidats = Representative::all();
         $candidats = Representative::with('user.profileImage')->get();

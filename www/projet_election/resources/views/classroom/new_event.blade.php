@@ -9,8 +9,19 @@
         <div class="modal-content" >
             <form id="form" action="{{ route('upload_image') }}" method="POST" class="shadow p-12" enctype="multipart/form-data">
                 @csrf
+                <select name="test">
+                    <option value="type"></option>
+                    <option>American Black Bear</option>
+                    <option>Asiatic Black Bear</option>
+                    <option>Brown Bear</option>
+                    <option>Giant Panda</option>
+                    <option>Sloth Bear</option>
+                    <option>Sun Bear</option>
+                    <option>Polar Bear</option>
+                    <option>Spectacled Bear</option>
+                </select>
                 <div class="container_button">
-                    <button type="" class="button_1">Ajouter l'évènement</button>
+                    <button type="" class="button_1">Ajouter</button>
                     <button type="button" class="button_2" onclick="calendarCloseModal('new_event')">Fermer</button>
                 </div>
             </form>

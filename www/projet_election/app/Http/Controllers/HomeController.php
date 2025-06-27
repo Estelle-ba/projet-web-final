@@ -29,6 +29,12 @@ class HomeController extends Controller
     {
         //Take all the data needed
         $user = Auth::user(); //The actual user
+
+        //If the user is not connected, he is redirected to the welcome page
+        if($user == null){
+            return view('welcome');
+        }
+
         $picture = Image_Profile::where('user_id', $user->id)->first(); //His profile picture
 
         //Go to the view with all the data needed
@@ -41,6 +47,12 @@ class HomeController extends Controller
     {
         //Take all the data needed
         $user = Auth::user(); //The actual user
+
+        //If the user is not connected, he is redirected to the welcome page
+        if($user == null){
+            return redirect()->route('/');
+        }
+
         $class = ClassModel::where('id', $user->class_id)->first();//His class
         $picture = Image_Profile::where('user_id', $user->id)->first();//His profile picture
 

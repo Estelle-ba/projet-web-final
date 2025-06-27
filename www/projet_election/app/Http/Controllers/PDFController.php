@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Representative;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Auth;
 
 class PDFController extends Controller
 {
@@ -14,6 +15,14 @@ class PDFController extends Controller
     //Function to generate the PDF of the representatives
     public function generatePDF()
     {
+        //Find the actual user
+        $user = Auth::user();
+
+        //If the user is not connected, he is redirected to the welcome page
+        if($user == null){
+            return redirect()->route('/');
+        }
+
         //Take all the data needed
         $users = User::all();//The users
         $representative = Representative::all();//The representatives

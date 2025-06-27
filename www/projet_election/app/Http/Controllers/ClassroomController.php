@@ -7,16 +7,23 @@ use App\Models\Image_Profile;
 use App\Models\Representative;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class classroomController extends Controller
 {
     //Function to go to the classroom page
     public function index()
     {
-        //Take all the data needed
-        $user = auth()->user(); //The actual user
-        $picture = Image_Profile::where('user_id', $user->id)->first();//His profile picture
+        //Find the actual user
+        $user = Auth::user();
 
+        //If the user is not connected, he is redirected to the welcome page
+        if($user == null){
+            return redirect()->route('/');
+        }
+
+        //Take all the data needed
+        $picture = Image_Profile::where('user_id', $user->id)->first();//His profile picture
         $alluser = User::all();//The users
         $representative = Representative::all();//The representatives
         $class_id = ClassModel::all();//The class

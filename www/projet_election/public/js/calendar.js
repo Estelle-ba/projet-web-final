@@ -1,11 +1,11 @@
-let date = new Date();
+let d = new Date();
 
 let old_month;
 let old_year;
 
 let calendar = document.getElementById('calendar');
 
-calendar.innerHTML = GenerateTable(date.getMonth(), date.getFullYear());
+calendar.innerHTML = GenerateTable(d.getMonth(), d.getFullYear());
 function plusMonth(n) {
     old_month += n;
     if (old_month === 12) {
@@ -72,17 +72,29 @@ function GenerateTable(month, year) {
             if (day % 7 === 1) {
                 table += '<div class="row">';
             }
+            let temp = new Date(year, month, 1);
 
-            date.setDate(date.getDate()+1);
-            let day_convert = date.toISOString().split('T')[0];
-            table += `<div class="actual_month" id="${day_convert}" onclick="calendarOpenModal('${day_convert}')">
-            ${(date.getDate() < 10) ? '0' + date.getDate() : date.getDate()}</div>`;
-
+            temp.setDate(date.getDate()+1);
+            let day_convert = temp.toISOString().split('T')[0];
+            if(day_convert!==d.toISOString().split('T')[0]){
+                if(temp>=d){
+                    table += `<div class="actual_month hover" id="${day_convert}" onclick="calendarOpenModal('${day_convert}')">
+                    ${(date.getDate() < 10) ? '0' + date.getDate() : date.getDate()}</div>`;
+                }
+                else{
+                    table += `<div class="actual_month" id="${day_convert}">
+                    ${(date.getDate() < 10) ? '0' + date.getDate() : date.getDate()}</div>`;
+                }
+            }
+            else{
+                table += `<div class="actual_date hover" id="${day_convert}" onclick="calendarOpenModal('${day_convert}')">
+                ${(date.getDate() < 10) ? '0' + date.getDate() : date.getDate()}</div>`;
+            }
             if (day % 7 === 0) {
                 table += '</div>';
             }
 
-
+            date.setDate(date.getDate()+1);
             day++;
             counter++;
         }
@@ -118,12 +130,19 @@ function calendarOpenModal(date) {
 
         let form = document.getElementById('form');
 
+        let date_format = new Date(date);
         calendarOpened = true;
 
 
         let title = document.createElement('h5');
+        title.className = "modal-title";
 
-        title.innerText = `Ajouter un évènement le ${date}`;
+        let existingTitle = form.querySelector('[class = modal-title]');
+        if (existingTitle) {
+            existingTitle.remove();
+        }
+
+        title.innerText = `Ajouter un évènement le ${date_format.toLocaleDateString()} :`;
         form.prepend(title);
 
         calendarModal.style.display = 'block';

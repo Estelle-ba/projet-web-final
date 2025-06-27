@@ -85,7 +85,7 @@
     <div class="modal-dialog " role="document">
         <div class="modal-content" >
             <div class="modal-header">
-                <h5 class="flex modal-title">Choisir une image</h5>
+                <h5 class="modal-title">Choisir une image</h5>
             </div>
             <form action="{{ route('upload_image') }}" method="POST" class="shadow p-12" enctype="multipart/form-data">
                 @csrf
@@ -99,7 +99,7 @@
                 </label>
                 <div class="container_button">
                     <button type="submit" class="button_1">Changer de photo</button>
-                    <button class="button_2" onclick="closeModal('change_profile_picture')">Fermer</button>
+                    <button type="button" class="button_2" onclick="closeModal('change_profile_picture')">Fermer</button>
                 </div>
             </form>
         </div>
