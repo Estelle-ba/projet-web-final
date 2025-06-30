@@ -5,6 +5,9 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use App\Models\User;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Auth;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -33,5 +36,7 @@ class AppServiceProvider extends ServiceProvider
             $roleUser = User::where('id',$user->id)->get()->firstOrFail();
             return $roleUser->role == "teacher";
         });
+
+
     }
 }

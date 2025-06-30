@@ -25,4 +25,16 @@ class Representative extends Model
     {
         return $this->belongsTo(\App\Models\User::class, 'id_representative');
     }
+
+    public function votes()
+    {
+        return $this->hasMany(Vote::class);
+    }
+
+// Pour compter rapidement
+    public function getVotesCountAttribute()
+    {
+        return $this->votes()->count();
+    }
+
 }

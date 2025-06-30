@@ -14,17 +14,17 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->string('question');
-            $table->int('class_id');
-            $table->int('user_id');
+            $table->integer('class_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
 
         Schema::create('answers', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->string('answer');
-            $table->int('question_id');
-            $table->int('class_id');
-            $table->int('user_id');
+            $table->integer('question_id');
+            $table->integer('class_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
