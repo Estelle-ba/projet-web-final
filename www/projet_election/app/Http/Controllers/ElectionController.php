@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ClassModel;
 use App\Models\Image_Profile;
 use App\Models\User;
 use App\Models\Representative;
@@ -25,7 +26,10 @@ class ElectionController extends Controller
         $candidats = Representative::all();
         $candidats = Representative::with('user.profileImage')->get();
         $picture = Image_Profile::where('user_id', $user->id)->first();
-        return view('election.index', compact('candidats', 'user', 'alluser', 'picture'));
+        $class_id = ClassModel::all();//The class
+        $profile_picture = Image_Profile::all();//All the profile pictures
+
+        return view('classroom.index', compact('candidats', 'user', 'alluser', 'picture', 'class_id', 'profile_picture'));
     }
 
 

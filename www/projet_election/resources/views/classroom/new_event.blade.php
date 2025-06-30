@@ -1,4 +1,4 @@
-<div id="calendar" >
+<div id="calendar" style="display: none">
     {{--The script calendar.js create all the calendar--}}}
     <div id="calendar"></div>
 </div>
@@ -150,3 +150,7 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <script src="{{ asset('js/calendar.js') }}"></script>
+@endpush

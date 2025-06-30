@@ -20,9 +20,7 @@ function closeModal(id) {
 //Function for the showing pages
 let old_div;
 let new_div;
-old_div = document.getElementById('calendar');
-let list_element =[];
-list_element.push(old_div);
+let list_element= document.getElementsByClassName('representative');
 
 function appear(id){
     //Browse the list of element opened and close it
