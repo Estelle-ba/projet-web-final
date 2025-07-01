@@ -6,6 +6,21 @@
     <div class="container mx-auto p-4">
         <h1 class="text-2xl font-bold mb-4">Vote des délégués</h1>
 
+        {{-- Overlay plein écran pour la vidéo d’intro --}}
+        <div
+            id="introOverlay"
+            class="fixed inset-0 bg-black flex items-center justify-center z-50"
+            style="display:none;"
+        >
+            <video
+                id="introVideo"
+                src="{{ asset('videos/intro.mov') }}"
+                autoplay
+                playsinline
+                class="w-full h-full object-cover"
+            ></video>
+        </div>
+
         <ul class="space-y-4">
             @foreach($candidats as $candidat)
                 <li class="flex items-center justify-between p-4 bg-white rounded shadow">
@@ -40,6 +55,15 @@
                 </li>
             @endforeach
         </ul>
+
+    </div>
+    <div>
+        <button
+            id="replayIntro"
+            class="fixed bottom-4 right-4 bg-gray-700 text-white text-sm px-2 py-1 rounded-full shadow-lg hover:bg-gray-800"
+        >
+          intro 🔄
+        </button>
     </div>
 
 
@@ -100,6 +124,39 @@
                     });
                 });
             });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const overlay = document.getElementById('introOverlay');
+                const video   = document.getElementById('introVideo');
+
+                // Si jamais on n'a pas encore vu l'intro
+                if (!localStorage.getItem('hasSeenVoteIntro')) {
+                    overlay.style.display = 'flex';
+
+                    // Quand la vidéo se termine, on cache l'overlay et on mémorise
+                    video.addEventListener('ended', () => {
+                        overlay.style.display = 'none';
+                        localStorage.setItem('hasSeenVoteIntro', 'yes');
+                    });
+
+                    // En cas de clic sur l'écran, on peut aussi passer l'intro
+                    overlay.addEventListener('click', () => {
+                        video.pause();
+                        overlay.style.display = 'none';
+                        localStorage.setItem('hasSeenVoteIntro', 'yes');
+                    });
+                }
+            });
+
+            const replayBtn = document.getElementById('replayIntro');
+            replayBtn.addEventListener('click', () => {
+                // Supprime le flag
+                localStorage.removeItem('hasSeenVoteIntro');
+                // Recharge la page (ou directement relance l'overlay)
+                location.reload();
+            });
+
         </script>
     @endpush
 
