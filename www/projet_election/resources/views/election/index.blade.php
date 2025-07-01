@@ -46,10 +46,9 @@
                             data-name="{{ $candidat->name }} {{ $candidat->lastname }}"
                             title="{{ $candidat->description }}"
                         >
-
-
                         {{ $candidat->name }} {{ $candidat->lastname }}
                         </button>
+                        <p>{{$candidat->description}}</p>
                         @if($candidat->suppleant)
                             <div class="suppleant">
                                 @if($pp_suppleant== null)

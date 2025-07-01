@@ -6,6 +6,7 @@ use App\Http\Controllers\ImageProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\ClassroomController;
+use App\Http\Controllers\UsersController;
 
 
 
@@ -29,6 +30,8 @@ Route::post('/account/upload_image', [ImageProfileController::class,'upload_imag
 Route::get('/classroom/manager', [ClassroomController::class, 'index'])->name('classroom-manager');
 Route::get('/classroom/manager/generate-pdf', [PDFController::class, 'generatePDF'])->name('generate-pdf');
 Route::post('/classroom/manager/add_event', [ClassroomController::class, 'add_event'])->name('add_event');
+Route::post('/classroom_management/add_student', [UsersController::class, 'create'])->name('add_student');
+Route::get('/classroom_management', [UsersController::class, 'index'])->name('classroom_management');
 
 
 //Classroom user pages

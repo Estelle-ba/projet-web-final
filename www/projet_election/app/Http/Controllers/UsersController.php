@@ -1,0 +1,117 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Image_Profile;
+use App\Models\User;
+use App\Models\ClassModel;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+
+class UsersController extends Controller
+{
+    function index(){
+        $user = Auth::user();
+
+        //If the user is not connected, he is redirected to the welcome page
+        if($user == null){
+            return redirect()->route('/');
+        }
+
+        $picture = Image_Profile::where('user_id', $user->id)->first();//His profile picture
+        $all_student = User::where('role', 'student')->get();
+        $class_id = ClassModel::all();
+        $profile_picture = Image_Profile::all();
+        //Go to the view with all the data needed
+
+        return view('classroom.management', compact('user', 'picture', 'all_student', 'class_id','profile_picture'));
+    }
+
+    function create(Request $request){
+        $user = Auth::user();
+
+        //If the user is not connected, he is redirected to the welcome page
+        if($user == null){
+            return redirect()->route('/');
+        }
+
+        $file=[];
+        $key=[];
+        $row=[];
+        $i = 0;
+
+
+        if(($handle = fopen($request -> csv, 'r')) !== false){
+            while(($data = fgetcsv($handle, 1000, ",")) !== false) {
+                $row[] = explode(";", $data[0]);
+                if ($i !== 0) {
+                    $temp = array_combine($key, $row[$i]);
+                    array_push($file, $temp);
+                }
+                else {
+                    $key = $row[$i];
+                }
+                $i++;
+            }
+            fclose($handle);
+        }
+
+        foreach ($file as $data) {
+            $group = strtoupper($data[$key[3]]);
+            if(str_contains($group, 'CERGY')){
+                if(str_contains($group, 'B1')){
+                    $class = ClassModel::where('name', 'B1')->where('place', 'Cergy')->firstorFail()->id;
+                }
+                else if (str_contains($group, 'B2')){
+                    $class = ClassModel::where('name', 'B2')->where('place', 'Cergy')->firstorFail()->id;
+                }
+                else{
+                    $class = ClassModel::where('name', 'B3')->where('place', 'Cergy')->firstorFail()->id;
+                }
+            }
+            else if (str_contains($group, 'PARIS')){
+                if(str_contains($group, 'B1')){
+                    $class = ClassModel::where('name', 'B1')->where('place', 'Paris')->firstorFail()->id;
+                }
+                else if (str_contains($group, 'B2')){
+                    $class = ClassModel::where('name', 'B2')->where('place', 'Paris')->firstorFail()->id;
+                }
+                else{
+                    $class = ClassModel::where('name', 'B3')->where('place', 'Paris')->firstorFail()->id;
+                }
+            }
+            else{
+                if(str_contains($group, 'M1')){
+                    if (str_contains($group, 'LEAD DEV')){
+                        $class = ClassModel::where('name', 'M1 Lead Dev')->firstorFail()->id;
+                    }
+                    else{
+                        $class = ClassModel::where('name', 'M1 Game Dev')->firstorFail()->id;
+                    }
+                }
+
+                else{
+                    if (str_contains($group, 'LEAD DEV')){
+                        $class = ClassModel::where('name', 'M2 Lead Dev')->firstorFail()->id;
+                    }
+                    else{
+                        $class = ClassModel::where('name', 'M2 Game Dev')->firstorFail()->id;
+                    }
+                }
+            }
+
+            User::create([
+                'name' => utf8_encode($data[$key[1]]),
+                'lastname' => utf8_encode($data[$key[0]]),
+                'email' => utf8_encode($data[$key[2]]),
+                'role'=>'student',
+                'class_id' => $class,
+                'phone_number'=>'null',
+                'password' => Hash::make('123456789'),
+            ]);
+        }
+
+        return redirect()->route('classroom_management');
+    }
+}
