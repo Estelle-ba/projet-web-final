@@ -15,7 +15,6 @@
             <video
                 id="introVideo"
                 src="{{ asset('videos/intro.mov') }}"
-                muted
                 playsinline
                 class="w-full h-full object-cover"
             ></video>
@@ -125,7 +124,7 @@
                 });
             });
         </script>
-       
+
             <script>
                 document.addEventListener('DOMContentLoaded', () => {
                     const overlay = document.getElementById('introOverlay');
