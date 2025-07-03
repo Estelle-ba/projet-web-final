@@ -15,7 +15,7 @@
             <video
                 id="introVideo"
                 src="{{ asset('videos/intro.mov') }}"
-                muted
+                autoplay
                 playsinline
                 class="w-full h-full object-cover"
             ></video>
@@ -57,14 +57,7 @@
         </ul>
 
     </div>
-    <div>
-        <button
-            id="replayIntro"
-            class="fixed bottom-4 right-4 bg-gray-700 text-white text-sm px-2 py-1 rounded-full shadow-lg hover:bg-gray-800"
-        >
-          intro 🔄
-        </button>
-    </div>
+
 
 
     @push('scripts')
@@ -125,48 +118,33 @@
                 });
             });
         </script>
-       
+
+
             <script>
                 document.addEventListener('DOMContentLoaded', () => {
                     const overlay = document.getElementById('introOverlay');
                     const video   = document.getElementById('introVideo');
-                    const replay  = document.getElementById('replayIntro');
 
-                    // Affiche l'overlay et lance la vidéo (muette)
-                    function showIntro(muted = true) {
-                        video.muted       = muted;
-                        overlay.style.display = 'flex';
-                        video.currentTime = 0;
-                        video.play();
-                    }
-
-                    // À la première visite : lance muet
+                    // Si jamais on n'a pas encore vu l'intro
                     if (!localStorage.getItem('hasSeenVoteIntro')) {
-                        showIntro(true);
+                        overlay.style.display = 'flex';
+
+                        // Quand la vidéo se termine, on cache l'overlay et on mémorise
+                        video.addEventListener('ended', () => {
+                            overlay.style.display = 'none';
+                            localStorage.setItem('hasSeenVoteIntro', 'yes');
+                        });
+
+                        // En cas de clic sur l'écran, on peut aussi passer l'intro
+                        overlay.addEventListener('click', () => {
+                            video.pause();
+                            overlay.style.display = 'none';
+                            localStorage.setItem('hasSeenVoteIntro', 'yes');
+                        });
                     }
-
-                    // Quand la vidéo se termine naturellement
-                    video.addEventListener('ended', () => {
-                        overlay.style.display = 'none';
-                        localStorage.setItem('hasSeenVoteIntro','yes');
-                    });
-
-                    // Clic sur l’overlay : on coupe la vidéo et on stocke la vue
-                    overlay.addEventListener('click', () => {
-                        video.pause();
-                        overlay.style.display = 'none';
-                        localStorage.setItem('hasSeenVoteIntro','yes');
-                    });
-
-                    // Bouton “Revoir l’intro” : relance AVEC son
-                    replay.addEventListener('click', () => {
-                        // On supprime le flag pour rejouer l’intro
-                        localStorage.removeItem('hasSeenVoteIntro');
-                        // On affiche l'overlay et on lance EN BRUIT
-                        showIntro(false);
-                    });
                 });
             </script>
+
         @endpush
 
 
