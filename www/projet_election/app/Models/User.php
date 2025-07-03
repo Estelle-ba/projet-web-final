@@ -55,4 +55,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Image_Profile::class, 'user_id');
     }
+
+    public function vote()
+    {
+        return $this->hasOne(Vote::class);
+    }
+
 }

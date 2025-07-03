@@ -41,5 +41,17 @@ Route::get('/election', [ElectionController::class, 'index'])
 Route::post('/election', [ElectionController::class, 'store'])
     ->name('election.store');
 
+use App\Http\Controllers\VoteController;
 
+// …
+
+Route::middleware('auth')->group(function() {
+    // Affichage de la page de vote
+    Route::get('/vote', [VoteController::class, 'index'])
+        ->name('vote.index');
+
+    // Enregistrement du vote via AJAX
+    Route::post('/vote', [VoteController::class, 'store'])
+        ->name('vote.store');
+});
 
