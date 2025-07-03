@@ -15,7 +15,7 @@
             <video
                 id="introVideo"
                 src="{{ asset('videos/intro.mov') }}"
-                autoplay
+                muted
                 playsinline
                 class="w-full h-full object-cover"
             ></video>
@@ -82,11 +82,11 @@
                             const res = await fetch("{{ route('vote.store') }}", {
                                 method: 'POST',
                                 headers: {
-                                    'Content-Type':'application/json',
-                                    'X-CSRF-TOKEN':token,
-                                    'Accept':'application/json'
+                                    'Content-Type': 'application/json',
+                                    'X-CSRF-TOKEN': token,
+                                    'Accept': 'application/json'
                                 },
-                                body: JSON.stringify({ representative_id: repId })
+                                body: JSON.stringify({representative_id: repId})
                             });
 
                             console.log('HTTP status:', res.status);
@@ -97,7 +97,7 @@
                             try {
                                 data = JSON.parse(text);
                                 console.log('Parsed JSON data:', data);
-                            } catch(e) {
+                            } catch (e) {
                                 console.error('Erreur JSON.parse:', e);
                                 return;
                             }
@@ -125,40 +125,50 @@
                 });
             });
         </script>
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const overlay = document.getElementById('introOverlay');
-                const video   = document.getElementById('introVideo');
+       
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const overlay = document.getElementById('introOverlay');
+                    const video   = document.getElementById('introVideo');
+                    const replay  = document.getElementById('replayIntro');
 
-                // Si jamais on n'a pas encore vu l'intro
-                if (!localStorage.getItem('hasSeenVoteIntro')) {
-                    overlay.style.display = 'flex';
+                    // Affiche l'overlay et lance la vidéo (muette)
+                    function showIntro(muted = true) {
+                        video.muted       = muted;
+                        overlay.style.display = 'flex';
+                        video.currentTime = 0;
+                        video.play();
+                    }
 
-                    // Quand la vidéo se termine, on cache l'overlay et on mémorise
+                    // À la première visite : lance muet
+                    if (!localStorage.getItem('hasSeenVoteIntro')) {
+                        showIntro(true);
+                    }
+
+                    // Quand la vidéo se termine naturellement
                     video.addEventListener('ended', () => {
                         overlay.style.display = 'none';
-                        localStorage.setItem('hasSeenVoteIntro', 'yes');
+                        localStorage.setItem('hasSeenVoteIntro','yes');
                     });
 
-                    // En cas de clic sur l'écran, on peut aussi passer l'intro
+                    // Clic sur l’overlay : on coupe la vidéo et on stocke la vue
                     overlay.addEventListener('click', () => {
                         video.pause();
                         overlay.style.display = 'none';
-                        localStorage.setItem('hasSeenVoteIntro', 'yes');
+                        localStorage.setItem('hasSeenVoteIntro','yes');
                     });
-                }
-            });
 
-            const replayBtn = document.getElementById('replayIntro');
-            replayBtn.addEventListener('click', () => {
-                // Supprime le flag
-                localStorage.removeItem('hasSeenVoteIntro');
-                // Recharge la page (ou directement relance l'overlay)
-                location.reload();
-            });
-
-        </script>
-    @endpush
+                    // Bouton “Revoir l’intro” : relance AVEC son
+                    replay.addEventListener('click', () => {
+                        // On supprime le flag pour rejouer l’intro
+                        localStorage.removeItem('hasSeenVoteIntro');
+                        // On affiche l'overlay et on lance EN BRUIT
+                        showIntro(false);
+                    });
+                });
+            </script>
+        @endpush
 
 
-@endsection
+
+        @endsection
