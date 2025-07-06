@@ -5,27 +5,23 @@ use Carbon\Carbon;
 
 // Date actuelle
 $now = Carbon::now('Europe/Paris');
-echo 'date est heur ',$now . "<br>";
+
 // Date de fin
-$finish = Carbon::parse('2025-08-05 16:30:00', 'Europe/Paris');
-echo 'date est heur de fin ',$finish . "<br>";
+$noww = Carbon::parse('2025-07-06 16:30:00', 'Europe/Paris');
+
+$date_end_raw = \App\Models\Event::where('type_event', 'representatives_proposition')->value('date_end');
+$date_end = Carbon::parse($date_end_raw, 'Europe/Paris');
+
+$date_end_present_raw = \App\Models\Event::where('type_event', 'representatives_presentation')->value('date_end');
+$date_end_present = Carbon::parse($date_end_present_raw, 'Europe/Paris');
+
+$date_raw = \App\Models\Event::where('type_event', 'representatives_proposition')->value('date_beggining');
+$date = Carbon::parse($date_raw, 'Europe/Paris');
 
 // Différence entre maintenant et la date de fin
-$diff = $now->diff($finish);
+$diff = $now->diff($date_end);
 
 // Affichage formaté
-if ($finish->isPast()) {
-    echo "Événement terminé.";
-} else {
-    echo sprintf(
-    "%02d jours, %02d heures, %02d minutes, %02d secondes",
-    $diff->d,
-    $diff->h,
-    $diff->i,
-    $diff->s
-    );
-}
-
 
 ?>
 
@@ -57,7 +53,7 @@ if ($finish->isPast()) {
 
 
         // Date de fin JavaScript
-        const finishTime = new Date("{{ $finish->toIso8601String() }}");
+        const finishTime = new Date("{{ $date_end_present->toIso8601String() }}");
 
         function updateCountdown() {
             const now = new Date();
@@ -67,7 +63,7 @@ if ($finish->isPast()) {
             if (diffMs <= 0) {
                 document.getElementById('countdown').innerText = "Événement terminé.";
                 clearInterval(interval);
-                window.location.href = '/test'; // Redirection JS
+                window.location.href = '/vote';
                 return;
             }
 
@@ -160,17 +156,21 @@ if ($finish->isPast()) {
     @endforeach
 </div>
 
-
-{{-- Bouton “Se présenter” --}}
-<div class="fixed_button">
-    <button onclick="openModal('modal_candidature')" class="button_computer" >
-        Se présenter
-    </button>
-    <button onclick="openModal('modal_candidature')" class="button_phone">
-        Se présenter
-    </button>
-</div>
-
+<?php
+if ($noww>$date && $noww<$date_end) {
+?>
+    {{-- Bouton “Se présenter” --}}
+    <div class="fixed_button">
+        <button onclick="openModal('modal_candidature')" class="button_computer" >
+            Se présenter
+        </button>
+        <button onclick="openModal('modal_candidature')" class="button_phone">
+            Se présenter
+        </button>
+    </div>
+<?php
+}
+?>
 
 {{-- Modal de candidature --}}
 <div id="modal_candidature" class="custom-modal">

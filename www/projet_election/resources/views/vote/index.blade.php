@@ -4,6 +4,107 @@
 
 @section('content')
     <div class="container mx-auto p-4">
+
+
+
+<?php
+use Carbon\Carbon;
+
+// Date actuelle
+$now = Carbon::now('Europe/Paris');
+
+// Date de fin
+$noww = Carbon::parse('2025-07-06 16:30:00', 'Europe/Paris');
+
+$date_end_raw = \App\Models\Event::where('type_event', 'representatives_election')->value('date_end');
+$date_end = Carbon::parse($date_end_raw, 'Europe/Paris');
+
+$date_raw = \App\Models\Event::where('type_event', 'representatives_election')->value('date_beggining');
+$date = Carbon::parse($date_raw, 'Europe/Paris');
+
+// Différence entre maintenant et la date de fin
+$diff = $now->diff($date_end);
+
+// Affichage formaté
+
+?>
+
+
+
+<div id="date">Chargement...</div>
+<div id="countdown">Chargement...</div>
+
+    <script>
+        //afichage date
+        function formatDate(date) {
+        const mois = [
+            "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+            "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+        ];
+
+        const jour = date.getDate();
+        const moisNom = mois[date.getMonth()];
+        const annee = date.getFullYear();
+
+        const heures = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        const secondes = String(date.getSeconds()).padStart(2, '0');
+
+        return `${jour} ${moisNom} ${annee} ${heures}:${minutes}:${secondes}`;
+    }
+
+
+
+
+        // Date de fin JavaScript
+        const finishTime = new Date("{{ $date_end->toIso8601String() }}");
+        const start = new Date("{{ $date->toIso8601String() }}");
+        const now = new Date("{{ $now->toIso8601String() }}");
+
+        if(now<start){
+            window.location.href = '/home';
+        }
+
+        function updateCountdown() {
+            const now = new Date();
+            document.getElementById('date').innerText = formatDate(now);
+            const diffMs = finishTime - now;
+
+            if (diffMs <= 0) {
+                document.getElementById('countdown').innerText = "Événement terminé.";
+                clearInterval(interval);
+                window.location.href = '/???'; //page fin de lelection a rentrer 
+                return;
+            }
+
+            const seconds = Math.floor(diffMs / 1000);
+            const days = Math.floor(seconds / (3600 * 24));
+            const hours = Math.floor((seconds % (3600 * 24)) / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            const secs = seconds % 60;
+
+            document.getElementById('countdown').innerText =
+                `${String(days).padStart(2, '0')} jours, ` +
+                `${String(hours).padStart(2, '0')} heures, ` +
+                `${String(minutes).padStart(2, '0')} minutes, ` +
+                `${String(secs).padStart(2, '0')} secondes`;
+        }
+
+        const interval = setInterval(updateCountdown, 1000);
+        updateCountdown(); // Lancer immédiatement
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
         <h1 class="text-2xl font-bold mb-4">Vote des délégués</h1>
 
         {{-- Overlay plein écran pour la vidéo d’intro --}}
