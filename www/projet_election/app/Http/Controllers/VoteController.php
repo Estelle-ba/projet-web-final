@@ -44,11 +44,6 @@ class VoteController extends Controller
             return redirect()->route('classroom-manager');
         }
 
-        $representative = Representative::where('id_representative',$request-> id_representative)->first();
-        if($user -> class_id != $representative-> class_id){
-            return redirect()->route('vote.index');
-        }
-
 
         // Empêcher plus d'un vote
         if ($user->vote) {
