@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ResultController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ElectionController;
 use App\Http\Controllers\ImageProfileController;
@@ -52,5 +53,9 @@ Route::middleware('auth')->group(function() {
     // Enregistrement du vote via AJAX
     Route::post('/vote', [VoteController::class, 'store'])
         ->name('vote.store');
+
+    Route::get('/results', [ResultController::class, 'index'])
+        ->name('results.index')
+        ->middleware('auth');
 });
 
