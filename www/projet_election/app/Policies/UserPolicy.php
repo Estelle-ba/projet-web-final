@@ -22,4 +22,10 @@ class UserPolicy
         $user = auth()->user();
         return $user->role == "manager";
     }
+
+    public function notStudent(): bool
+    {
+        $user = auth()->user();
+        return $user->role !== "student";
+    }
 }

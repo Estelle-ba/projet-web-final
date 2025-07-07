@@ -23,36 +23,38 @@
 
         <ul class="space-y-4">
             @foreach($candidats as $candidat)
-                <li class="flex items-center justify-between p-4 bg-white rounded shadow">
-                    <div class="flex items-center">
-                        {{-- Avatar si besoin --}}
-                        <img src="{{ optional($candidat->user->profileImage)->image
-                           ? Storage::url($candidat->user->profileImage->image)
-                           : asset('images/avatar-placeholder.png') }}"
-                             alt="Avatar" class="w-10 h-10 rounded-full mr-3 object-cover">
+                @if($candidat -> class_id == $user->class_id)
+                    <li class="flex items-center justify-between p-4 bg-white rounded shadow">
+                        <div class="flex items-center">
+                            {{-- Avatar si besoin --}}
+                            <img src="{{ optional($candidat->user->profileImage)->image
+                               ? Storage::url($candidat->user->profileImage->image)
+                               : asset('images/avatar-placeholder.png') }}"
+                                 alt="Avatar" class="w-10 h-10 rounded-full mr-3 object-cover">
 
-                        <div>
-                            <div class="font-semibold">
-                                {{ $candidat->name }} {{ $candidat->lastname }}
-                            </div>
                             <div>
-                        <span id="votes-{{ $candidat->id }}">
-                            {{ $candidat->votes_count }}
-                        </span>
-                                voix
+                                <div class="font-semibold">
+                                    {{ $candidat->name }} {{ $candidat->lastname }}
+                                </div>
+                                <div>
+                            <span id="votes-{{ $candidat->id }}">
+                                {{ $candidat->votes_count }}
+                            </span>
+                                    voix
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    @unless($hasVoted)
-                        <button
-                            class="vote-button px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
-                            data-id="{{ $candidat->id }}"
-                        >
-                            Voter
-                        </button>
-                    @endunless
-                </li>
+                        @unless($hasVoted)
+                            <button
+                                class="vote-button px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+                                data-id="{{ $candidat->id }}"
+                            >
+                                Voter
+                            </button>
+                        @endunless
+                    </li>
+                @endif
             @endforeach
         </ul>
 

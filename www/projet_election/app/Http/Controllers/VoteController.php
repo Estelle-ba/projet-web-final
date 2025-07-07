@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Image_Profile;
 use App\Models\Representative;
+use App\Models\User;
 use App\Models\Vote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,12 +15,21 @@ class VoteController extends Controller
     public function index()
     {
         $user = auth()->user();
+
+        //If the user is not connected, he is redirected to the welcome page
+        if($user == null){
+            return redirect()->route('/');
+        }
+        else if($this->authorize('view', Representative::class) == false){
+            return redirect()->route('classroom-manager');
+        }
+
         $candidats = Representative::withCount('votes')->get();
         $hasVoted  = Auth::user()->vote()->exists();
         $picture = Image_Profile::where('user_id', $user->id)->first();
 
 
-        return view('vote.index', compact('candidats','hasVoted', 'picture'));
+        return view('vote.index', compact('user','candidats','hasVoted', 'picture'));
     }
 
     // Enregistrer un vote via AJAX
@@ -30,6 +40,15 @@ class VoteController extends Controller
         ]);
 
         $user = Auth::user();
+        if($this->authorize('view', Representative::class) == false){
+            return redirect()->route('classroom-manager');
+        }
+
+        $representative = Representative::where('id_representative',$request-> id_representative)->first();
+        if($user -> class_id != $representative-> class_id){
+            return redirect()->route('vote.index');
+        }
+
 
         // Empêcher plus d'un vote
         if ($user->vote) {

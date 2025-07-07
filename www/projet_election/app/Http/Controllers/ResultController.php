@@ -11,6 +11,15 @@ class ResultController extends Controller
     public function index()
     {
         $user = auth()->user();
+
+        //If the user is not connected, he is redirected to the welcome page
+        if($user == null){
+            return redirect()->route('/');
+        }
+        else if($this->authorize('view', Representative::class) == false){
+            return redirect()->route('classroom-manager');
+        }
+
         // Récupère tous les candidats avec leur nombre de votes
         $candidats = Representative::withCount('votes')
             ->orderByDesc('votes_count')

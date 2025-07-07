@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Representative;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Policies\RepresentativePolicy;
 
 class ElectionController extends Controller
 {
@@ -20,6 +21,9 @@ class ElectionController extends Controller
         //If the user is not connected, he is redirected to the welcome page
         if($user == null){
             return redirect()->route('/');
+        }
+        else if($this->authorize('view', Representative::class) == false){
+            return redirect()->route('classroom-manager');
         }
 
         $alluser = User::all();
@@ -43,8 +47,21 @@ class ElectionController extends Controller
             'video_link'  => 'nullable|url',
             'description' => 'nullable|string|max:1000',   // ← ajouté
         ]);
+
+        $user = Auth::user();
+
+        if($this->authorize('view', Representative::class) == false){
+            return redirect()->route('classroom-manager');
+        }
+
+        if($user -> id != $request-> id_representative){
+            return redirect()->route('election.index');
+        }
+
         $class_id = User::all()->where('id', $request-> id_representative)->firstOrFail()->class_id;
         $suppleant= User::all()->where('id', $request-> id_suppleant)->firstOrFail()->name;
+
+
         Representative::create([
             'name' => $request-> name,
             'lastname' => $request-> lastname,

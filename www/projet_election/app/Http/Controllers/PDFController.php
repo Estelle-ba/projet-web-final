@@ -23,7 +23,7 @@ class PDFController extends Controller
             return redirect()->route('/');
         }
 
-        if($this->authorize('create', User::class) == false){
+        if($this->authorize('notStudent', User::class) == false){
             return redirect()->route('classroom-manager');
         }
 
