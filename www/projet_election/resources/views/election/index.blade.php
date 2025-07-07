@@ -7,7 +7,7 @@ use Carbon\Carbon;
 $now = Carbon::now('Europe/Paris');
 echo 'date est heur ',$now . "<br>";
 // Date de fin
-$finish = Carbon::parse('2025-07-03 16:30:00', 'Europe/Paris');
+$finish = Carbon::parse('2025-07-05 16:30:00', 'Europe/Paris');
 echo 'date est heur de fin ',$finish . "<br>";
 
 // Différence entre maintenant et la date de fin
