@@ -14,7 +14,6 @@ use Carbon\Carbon;
 $now = Carbon::now('Europe/Paris');
 
 // Date de fin
-$noww = Carbon::parse('2025-07-06 16:30:00', 'Europe/Paris');
 
 $date_end_raw = \App\Models\Event::where('type_event', 'representatives_election')->value('date_end');
 $date_end = Carbon::parse($date_end_raw, 'Europe/Paris');
@@ -73,7 +72,7 @@ $diff = $now->diff($date_end);
             if (diffMs <= 0) {
                 document.getElementById('countdown').innerText = "Événement terminé.";
                 clearInterval(interval);
-                window.location.href = '/???'; //page fin de lelection a rentrer 
+                window.location.href = '/results'; //page fin de lelection a rentrer
                 return;
             }
 

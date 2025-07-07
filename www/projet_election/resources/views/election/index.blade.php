@@ -7,7 +7,6 @@ use Carbon\Carbon;
 $now = Carbon::now('Europe/Paris');
 
 // Date de fin
-$noww = Carbon::parse('2025-07-06 16:30:00', 'Europe/Paris');
 
 $date_end_raw = \App\Models\Event::where('type_event', 'representatives_proposition')->value('date_end');
 $date_end = Carbon::parse($date_end_raw, 'Europe/Paris');
@@ -157,7 +156,7 @@ $diff = $now->diff($date_end);
 </div>
 
 <?php
-if ($noww>$date && $noww<$date_end) {
+if ($now>$date && $now<$date_end) {
 ?>
     {{-- Bouton “Se présenter” --}}
     <div class="fixed_button">
