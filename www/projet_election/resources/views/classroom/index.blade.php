@@ -40,6 +40,16 @@
                 @endforeach
             </div>
             @endcan
+
+            @can('isAdmin')
+                <button class="accordion" id="accordion_3" onclick="menu_toggle('accordion_3')">Gestions des classes</button>
+                <div class="panel" id="panel_3">
+                    <button class="list_panel" onclick="appear('all_students')">Toutes les classes</button>
+                    @foreach($class_id as $c)
+                        <button class="list_panel" onclick="appear('students{{$c->id}}')">{{$c->name}} - {{$c->place}}</button>
+                    @endforeach
+                </div>
+            @endcan
         </div>
 
         {{--The pages that appear one by one--}}
@@ -47,6 +57,7 @@
             {{--A calendar page--}}
             @can('isAdmin')
                 @include('classroom.new_event')
+                @include('classroom.management')
             @endcan
 
             {{--All representatives page--}}
@@ -58,21 +69,11 @@
 
             {{--All questions by student page--}}
             @include('classroom.questions')
+
         </div>
     </div>
 
-    {{--The button to get all the representative in a pdf--}}
-    @can('isStudent')
-    @else{{--Only the teacher and the admin can access--}}
-        <form method="GET" action="{{route('generate-pdf')}}" class="fixed_button">
-            <button type="submit" class="button_computer">
-                PDF des délégués
-            </button>
-            <button type="submit" class="button_phone">
-                PDF
-            </button>
-        </form>
-    @endcan
+
 @endsection
 
 

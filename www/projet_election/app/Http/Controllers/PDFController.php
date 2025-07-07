@@ -23,6 +23,10 @@ class PDFController extends Controller
             return redirect()->route('/');
         }
 
+        if($this->authorize('create', User::class) == false){
+            return redirect()->route('classroom-manager');
+        }
+
         //Take all the data needed
         $users = User::all();//The users
         $representative = Representative::all();//The representatives

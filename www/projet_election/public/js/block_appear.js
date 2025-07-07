@@ -31,12 +31,16 @@ function appear(id){
 
     //Replace all the element of the list by the one in the representatives one
     if(id === 'all_representatives') {
-        list_element = document.getElementsByClassName('representative');
+        list_element = Array.from(document.getElementsByClassName('representative'));
+        new_div = document.getElementById('button_representatives');
+        list_element.push(new_div);
     }
 
     //Replace all the element of the list by the one in the questions one
-    else if(id.includes('all_questions')){
-
+    else if(id.includes('all_students')){
+        list_element = Array.from(document.getElementsByClassName('students'));
+        new_div = document.getElementById('button_students');
+        list_element.push(new_div);
     }
 
     //Add only one element to the list to open it

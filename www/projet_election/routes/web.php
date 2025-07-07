@@ -31,7 +31,6 @@ Route::get('/classroom/manager', [ClassroomController::class, 'index'])->name('c
 Route::get('/classroom/manager/generate-pdf', [PDFController::class, 'generatePDF'])->name('generate-pdf');
 Route::post('/classroom/manager/add_event', [ClassroomController::class, 'add_event'])->name('add_event');
 Route::post('/classroom_management/add_student', [UsersController::class, 'create'])->name('add_student');
-Route::get('/classroom_management', [UsersController::class, 'index'])->name('classroom_management');
 
 
 //Classroom user pages

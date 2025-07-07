@@ -23,6 +23,9 @@ class classroomController extends Controller
         if ($user == null) {
             return redirect()->route('/');
         }
+        else if($user->role == "student"){
+            return redirect()->route('election.index');
+        }
 
         //Take all the data needed
         $picture = Image_Profile::where('user_id', $user->id)->first();//His profile picture
@@ -41,6 +44,9 @@ class classroomController extends Controller
         $user = Auth::user();
         //If the user is not connected, he is redirected to the welcome page
         if ($user == null) {
+            return redirect()->route('/');
+        }
+        if($this->authorize('create', Event::class) == false){
             return redirect()->route('/');
         }
 

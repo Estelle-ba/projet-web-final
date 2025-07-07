@@ -64,3 +64,17 @@
         </div>
     @endforeach
 </div>
+
+
+{{--The button to get all the representative in a pdf--}}
+@can('isStudent')
+@else{{--Only the teacher and the admin can access--}}
+<form method="GET" action="{{route('generate-pdf')}}" class="fixed_button" id="button_representatives" style ="display:none">
+    <button type="submit" class="button_computer">
+        PDF des délégués
+    </button>
+    <button type="submit" class="button_phone">
+        PDF
+    </button>
+</form>
+@endcan
