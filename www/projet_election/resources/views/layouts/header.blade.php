@@ -85,7 +85,7 @@
                 <a href="{{route('account')}}" >
                     {{--Take the user's profile picture or put a default one if there's no one--}}
 
-                    @if($picture)
+                    @if(isset($picture) && $picture)
                         <img class="img_computer" style="border-radius: 100%;" decoding="async"
                              src="{{asset('storage/' . $picture->image)}}"
                              alt=""/>

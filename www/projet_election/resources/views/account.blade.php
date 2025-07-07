@@ -7,7 +7,7 @@
         <div class="account_left">
 
             {{--Take the user's profile picture or put a default one if there's no one--}}
-            @if($picture)
+            @if(isset($picture) && $picture)
                 <img
                     src="{{asset('storage/' . $picture->image)}}"
                     alt=""/>
