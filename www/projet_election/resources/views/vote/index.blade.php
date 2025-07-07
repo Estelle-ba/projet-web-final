@@ -14,8 +14,9 @@ use Carbon\Carbon;
 $now = Carbon::now('Europe/Paris');
 
 // Date de fin
-
-$date_end_raw = \App\Models\Event::where('type_event', 'representatives_election')->value('date_end');
+$date_end_raw = \App\Models\Event::where('type_event', 'representatives_election')
+      ->where('date_end', '>', Carbon::now('Europe/Paris')->addMonth())
+      ->value('date_end');
 $date_end = Carbon::parse($date_end_raw, 'Europe/Paris');
 
 $date_raw = \App\Models\Event::where('type_event', 'representatives_election')->value('date_beggining');

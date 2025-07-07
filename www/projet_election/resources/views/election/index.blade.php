@@ -8,7 +8,9 @@ $now = Carbon::now('Europe/Paris');
 
 // Date de fin
 
-$date_end_raw = \App\Models\Event::where('type_event', 'representatives_proposition')->value('date_end');
+$date_end_raw = \App\Models\Event::where('type_event', 'representatives_presentation')
+    ->where('date_end', '>', Carbon::now('Europe/Paris')->addMonth())
+    ->value('date_end');
 $date_end = Carbon::parse($date_end_raw, 'Europe/Paris');
 
 $date_end_present_raw = \App\Models\Event::where('type_event', 'representatives_presentation')->value('date_end');
