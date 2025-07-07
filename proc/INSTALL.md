@@ -38,6 +38,9 @@ DB_USERNAME=root
 DB_PASSWORD=root
 ```
 
+- Enlever le .example à la fin du nom du fichier
+
+  
 ## Etape Bonus :
 ### Lancez les données de bases du site
 - Ouvrez le dossier www/projet_election dans le terminal
