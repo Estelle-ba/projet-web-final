@@ -8,7 +8,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\UsersController;
-
+use App\Http\Controllers\Auth\OtpController;
+use App\Http\Controllers\VoteController;
+use App\Http\Controllers\Auth\LoginController;
 
 
 //Welcome pages
@@ -34,14 +36,16 @@ Route::post('/classroom/manager/add_event', [ClassroomController::class, 'add_ev
 Route::post('/classroom_management/add_student', [UsersController::class, 'create'])->name('add_student');
 
 
+Route::get('/verify-otp', [OtpController::class, 'showForm'])->name('otp.form');
+Route::post('/verify-otp', [OtpController::class, 'verify'])->name('otp.verify');
+
+
 //Classroom user pages
 Route::get('/election', [ElectionController::class, 'index'])
     ->name('election.index');
 
 Route::post('/election', [ElectionController::class, 'store'])
     ->name('election.store');
-
-use App\Http\Controllers\VoteController;
 
 // …
 
@@ -57,5 +61,7 @@ Route::middleware('auth')->group(function() {
     Route::get('/results', [ResultController::class, 'index'])
         ->name('results.index')
         ->middleware('auth');
+
 });
+
 

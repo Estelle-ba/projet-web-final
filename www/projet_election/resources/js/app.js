@@ -5,6 +5,8 @@
  */
 
 import './bootstrap';
+import './password-toggle';
+
 import { createApp } from 'vue';
 
 /**

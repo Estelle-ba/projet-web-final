@@ -24,7 +24,7 @@ let list_element= document.getElementsByClassName('representative');
 
 function appear(id){
     //Browse the list of element opened and close it
-    for(let i = 0; i < list_element.length; i++) {
+    for(let i = 0; i < list_element.length ; i++) {
         old_div = list_element[i];
         old_div.style.display = 'none';
     }
@@ -33,7 +33,10 @@ function appear(id){
     if(id === 'all_representatives') {
         list_element = Array.from(document.getElementsByClassName('representative'));
         new_div = document.getElementById('button_representatives');
-        list_element.push(new_div);
+        console.log(new_div);
+        if(new_div !== null ) {
+            list_element.push(new_div);
+        }
     }
 
     //Replace all the element of the list by the one in the questions one
@@ -51,7 +54,8 @@ function appear(id){
     }
 
     //Browse the list of element to open and open it
-    for(let i = 0; i < list_element.length; i++) {
+    for(let i = 0; i < list_element.length ; i++) {
+        console.log(list_element[i]);
         new_div = list_element[i];
         new_div.style.display = 'block';
     }

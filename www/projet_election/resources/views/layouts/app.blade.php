@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <title>Coding Factory by ESIEE-IT - L'école qui bouscule le </code></title>
         @auth
@@ -13,7 +13,11 @@
         <!-- Intégration de Tailwind CSS via CDN -->
         <script src="https://cdn.tailwindcss.com"></script>
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <link rel="dns-prefetch" href="//fonts.bunny.net">
+        <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+        <!-- Scripts -->
+        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     </head>
 
     <body>
